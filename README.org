@@ -583,8 +583,7 @@ This is stuff that handles some of the values like =GAPS=, =BORDERS=, =LAYOUT=, 
 
 #+begin_src conf :tangle ~/.config/hypr/hyprland.conf
 
-windowrulev2 = opacity 0.90 override 0.90 override, class:.*
-windowrulev2 = opacity 0.75 override 0.75 override, class: zen
+windowrulev2 = opacity 0.75 override 0.75 override, class:.*
 
 general {
     gaps_in = 5
