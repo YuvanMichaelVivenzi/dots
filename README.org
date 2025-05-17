@@ -3,6 +3,7 @@
 #+STARTUP: showeverything
 
 *** BEST VIEWED USING EMACS ORG MODE THAT IS SET UP CORRECTLY * 
+*** Emacs Config present as =config.org= in the repo *
 *** Org documents are my preferred way. This file is purposely bloated as its written more as a guide than a config to use. And it serves as valuable documentation for me *
 
 * Table Of Contents :toc:
