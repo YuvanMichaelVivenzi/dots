@@ -1279,14 +1279,14 @@ animations {
 #+end_src
 
 ***** myanim.conf
-This is my clone of dynamic.conf with a slower border loop animation.
+This is my animations config with smooth workspace transitions, better window open/close, faster menu transitions and more
 #+begin_src conf :tangle ~/.config/hypr/animations/myanim.conf
 # ----------------------------------------------------- 
 # ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
 # █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
 #
-# name "Dynamic"
-# credit https://github.com/mylinuxforwork/dotfiles
+# name "myanim"
+# credit goes to the ones in the credits section
 # ----------------------------------------------------- 
 
 animations {
@@ -1300,15 +1300,17 @@ animations {
     bezier = menu_decel, 0.1, 1, 0, 1
     bezier = menu_accel, 0.38, 0.04, 1, 0.07
     bezier = softAcDecel, 0.26, 0.26, 0.15, 1
+    bezier = smoothOut, 0.5, 0, 0.99, 0.99    
     animation = windows, 1, 6, wind, slide
     animation = windowsIn, 1, 6, winIn, slide
-    animation = windowsOut, 1, 5, winOut, slide
+    animation = windowsOut, 1, 3, smoothOut, slide
     animation = windowsMove, 1, 5, wind, slide
     animation = border, 1, 1, liner
     animation = borderangle, 1,100, linear, loop
     animation = workspaces, 1, 2.5, softAcDecel, slide
     animation = workspaces, 1, 7, menu_decel, slidefade 15%
     animation = specialWorkspace, 1, 3, md3_decel, slidefadevert 15%
+    animation = fade, 1, 2.5, md3_decel
 
 }
 
@@ -1396,6 +1398,8 @@ bind = $mainMod+Ctrl, W, exec, ~/wallpapers/wallpaperchange3.sh
 bind = $mainMod+Shift, E, exec, emacsclient -c -a "emacs "
 bind = $mainMod+SHIFT, B, exec, killall waybar && sleep 2 && waybar
 bind = $mainMod+SHIFT, S, exec, grimblast --freeze copysave area && killall waybar && sleep 2 && waybar
+bind = $mainMod+SHIFT, R, exec, hyprctl reload && sleep 2 && killall waybar && sleep 2 && waybar
+# full reload in case if required. 
 bind = $mainMod, Return, exec, $terminal
 bind = $mainMod SHIFT, Return, exec, $menu
 bind = $mainMod SHIFT, C, killactive,
