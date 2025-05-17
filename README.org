@@ -3,7 +3,6 @@
 #+STARTUP: showeverything
 
 *** BEST VIEWED USING EMACS ORG MODE THAT IS SET UP CORRECTLY * 
-*** Emacs Config present as =config.org= in the repo *
 *** Org documents are my preferred way. This file is purposely bloated as its written more as a guide than a config to use. And it serves as valuable documentation for me *
 
 * Table Of Contents :toc:
@@ -63,6 +62,12 @@
 - [[#qt-config-ends-here][QT Config =ENDS= here]]
 - [[#pacman-config-starts-here][Pacman Config =STARTS= here]]
 - [[#pacman-config-ends-here][Pacman Config =ENDS= here]]
+- [[#grub-theme--config-starts-here][GRUB Theme / Config =STARTS= here]]
+- [[#grub-theme--config-ends-here][GRUB Theme / Config =ENDS= here]]
+- [[#sddm-theme--config-starts-here][SDDM Theme / Config =STARTS= here]]
+- [[#sddm-theme--config-ends-here][SDDM Theme / Config =ENDS= here]]
+- [[#neovim-config-starts-here][Neovim Config =STARTS= here]]
+- [[#neovim-config-ends-here][Neovim Config =ENDS= here]]
 
 **  MANAGEMENT :
 This is an open source project hosted on GitHub. (https://www.github.com/) hosted on the url (https://www.github.com/YuvanMichaelVivenzi/dots)
@@ -92,7 +97,7 @@ This project wouldn't have been possible without the help of these amazing proje
 
 * A CLEAR WARNING 
 
-Someone did a better job than me, thanks =rubiin= for this amazing paragraph.  
+Someone did a better job than me, thanks @rubiin for this amazing paragraph.  
 
 **** Warning: Installing these dotfiles may cause unexpected side effects, including but not limited to:
 
@@ -132,6 +137,11 @@ This org document is intended to be used by "a seasoned linux user" and not "the
 This file contains all the information that one would need about my dotfiles. 
 
 ** Affected Programs: 
+*** Status 
+
+=(D) => DONE= =(NS) => NEEDS SETUP BY USER=
+
+
 My dotfiles will modify the configuration of the following programs. 
 1. Hyprland (D)
 2. Waybar (D)
@@ -141,14 +151,13 @@ My dotfiles will modify the configuration of the following programs.
 7. Fish (D)
 8. Rofi (D)
 9. Emacs (D)
-10. Waypaper (D)
+10. Waypaper (D) (NS)
 11. GTK (D) (NS)
 12. QT (D) (NS)
-13. Kvantum (D) (NS)
 14. Starship (D)
 
 *** Extras (Optional configurations that I include for the following programs)
-1. Pacman (NS)
+1. Pacman (NS) (D)
 2. GRUB (NS)
 3. SDDM (NS)
 4. Neovim (NS)
@@ -629,38 +638,681 @@ decoration {
 #+end_src
 
 *** Animations:
-Woo! Animations! 
-#+begin_src conf :tangle ~/.config/hypr/hyprland.conf
+Woo! Animations!
+
+A LOT of animations are configured in the animations directory which should suit most users' tastes. This should be pretty much the ultimate animation pack for Hyprland. Even if you aren't satisfied with this, you can copy-paste a few lines from the other animation files present here and get your desired result. The animations directory is mostly a collection of animations used in a whole lot of preconfigured setups. Animations from popular dotfiles like ML4W (mylinuxforwork by Stephan Raabe), HyDE (Prasanthrangan and kRHYME7) end4 and many more. 
+
+**** List of Animations 
+1. Classic
+2. diablo-1
+3. diablo-2
+4. Disable (*disables animations*)
+5. dynamic.conf (my favourite)
+6. end4
+7. fast
+8. high
+9. ja
+10. me-1
+11. me-2
+12. minimal-1
+13. minimal-2
+14. moving
+15. optimized
+16. standard
+17. theme
+18. vertical
+
+***** classic.conf
+The original Hyprland animations
+#+begin_src conf :tangle ~/.config/hypr/animations/classic.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Classic"
+# credit https://github.com/mylinuxforwork/dotfiles
+# ----------------------------------------------------- 
+
 animations {
-    enabled = yes, please :)
-
-    # Default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
-
-    bezier = easeOutQuint,0.23,1,0.32,1
-    bezier = easeInOutCubic,0.65,0.05,0.36,1
-    bezier = linear,0,0,1,1
-    bezier = almostLinear,0.5,0.5,0.75,1.0
-    bezier = quick,0.15,0,0.1,1
-
-    animation = global, 1, 10, default
-    animation = border, 1, 5.39, easeOutQuint
-    animation = windows, 1, 4.79, easeOutQuint
-    animation = windowsIn, 1, 4.1, easeOutQuint, popin 87%
-    animation = windowsOut, 1, 1.49, linear, popin 87%
-    animation = fadeIn, 1, 1.73, almostLinear
-    animation = fadeOut, 1, 1.46, almostLinear
-    animation = fade, 1, 3.03, quick
-    animation = layers, 1, 3.81, easeOutQuint
-    animation = layersIn, 1, 4, easeOutQuint, fade
-    animation = layersOut, 1, 1.5, linear, fade
-    animation = fadeLayersIn, 1, 1.79, almostLinear
-    animation = fadeLayersOut, 1, 1.39, almostLinear
-    animation = workspaces, 1, 1.94, almostLinear, fade
-    animation = workspacesIn, 1, 1.21, almostLinear, fade
-    animation = workspacesOut, 1, 1.94, almostLinear, fade
-# ANIMATION FOR BORDER
-    animation = borderangle, 1, 100, linear, loop
+    enabled = true
+    bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+    animation = windows, 1, 7, myBezier
+    animation = windowsOut, 1, 7, default, popin 80%
+    animation = border, 1, 10, default
+    animation = borderangle, 1, 8, default
+    animation = fade, 1, 7, default
+    animation = workspaces, 1, 6, default
 }
+
+#+end_src
+
+***** diablo-1.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/diablo-1.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Diablo-1"
+# credit https://github.com/Itz-Abhishek-Tiwari
+# ----------------------------------------------------- 
+
+animations {
+    enabled = 1
+    bezier = default, 0.05, 0.9, 0.1, 1.05
+    bezier = wind, 0.05, 0.9, 0.1, 1.05
+    bezier = overshot, 0.13, 0.99, 0.29, 1.08
+    bezier = liner, 1, 1, 1, 1
+    bezier = bounce, 0.4, 0.9, 0.6, 1.0
+    bezier = snappyReturn, 0.4, 0.9, 0.6, 1.0
+
+    bezier = slideInFromRight, 0.5, 0.0, 0.5, 1.0
+    animation = windows, 1, 5,  snappyReturn, slidevert
+    animation = windowsIn, 1, 5, snappyReturn, slidevert right 
+  
+    animation = windowsOut, 1, 5, snappyReturn, slide 
+    animation = windowsMove, 1, 6, bounce, slide
+    animation = layersOut, 1, 5, bounce, slidevert right
+    animation = fadeIn, 1, 10, default
+    animation = fadeOut, 1, 10, default
+    animation = fadeSwitch, 1, 10, default
+    animation = fadeShadow, 1, 10, default
+    animation = fadeDim, 1, 10, default
+    animation = fadeLayers, 1, 10, default
+    animation = workspaces, 1, 7, overshot, slidevert
+    animation = border, 1, 1, liner
+    animation = layers, 1, 4, bounce, slidevert right
+    animation = borderangle, 1, 30, liner, loop
+} 
+
+#+end_src
+ 
+***** diablo-2.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/diablo-2.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Diablo-2"
+# credit https://github.com/Itz-Abhishek-Tiwari
+# ----------------------------------------------------- 
+
+animations {
+    enabled = 1
+    bezier = default, 0.05, 0.9, 0.1, 1.05
+    bezier = wind, 0.05, 0.9, 0.1, 1.05
+    bezier = overshot, 0.13, 0.99, 0.29, 1.08
+    bezier = liner, 1, 1, 1, 1
+    animation = windows, 1, 7, wind, popin
+    animation = windowsIn, 1, 7, overshot, popin
+    animation = windowsOut, 1, 5, overshot, popin
+    animation = windowsMove, 1, 6, overshot, slide
+    animation = layers, 1, 5, default, popin
+    animation = fadeIn, 1, 10, default
+    animation = fadeOut, 1, 10, default
+    animation = fadeSwitch, 1, 10, default
+    animation = fadeShadow, 1, 10, default
+    animation = fadeDim, 1, 10, default
+    animation = fadeLayers, 1, 10, default
+    animation = workspaces, 1, 7, overshot, slidevert
+    animation = border, 1, 1, liner
+    animation = borderangle, 1, 30, liner, loop
+}
+#+end_src
+
+***** disable.conf
+Disables all animations 
+#+begin_src conf :tangle ~/.config/hypr/animations/disable.conf
+
+# // ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# // █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+
+# See https://wiki.hyprland.org/Configuring/Animations/
+# credits: https://github.com/prasanthrangan/hyprdots
+
+animations:enabled=false
+
+
+#+end_src
+
+***** dynamic.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/dynamic.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Dynamic"
+# credit https://github.com/mylinuxforwork/dotfiles
+# ----------------------------------------------------- 
+
+animations {
+    enabled = true
+    bezier = wind, 0.05, 0.9, 0.1, 1.05
+    bezier = winIn, 0.1, 1.1, 0.1, 1.1
+    bezier = winOut, 0.3, -0.3, 0, 1
+    bezier = liner, 1, 1, 1, 1
+    animation = windows, 1, 6, wind, slide
+    animation = windowsIn, 1, 6, winIn, slide
+    animation = windowsOut, 1, 5, winOut, slide
+    animation = windowsMove, 1, 5, wind, slide
+    animation = border, 1, 1, liner
+    animation = borderangle, 1, 30, liner, loop
+    animation = fade, 1, 10, default
+    animation = workspaces, 1, 5, wind
+}
+#+end_src
+
+***** end4.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/end4.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "End4"
+# credit https://github.com/end-4/dots-hyprland
+# ----------------------------------------------------- 
+
+animations {
+    enabled = true
+    # Animation curves
+    
+    bezier = linear, 0, 0, 1, 1
+    bezier = md3_standard, 0.2, 0, 0, 1
+    bezier = md3_decel, 0.05, 0.7, 0.1, 1
+    bezier = md3_accel, 0.3, 0, 0.8, 0.15
+    bezier = overshot, 0.05, 0.9, 0.1, 1.1
+    bezier = crazyshot, 0.1, 1.5, 0.76, 0.92 
+    bezier = hyprnostretch, 0.05, 0.9, 0.1, 1.0
+    bezier = menu_decel, 0.1, 1, 0, 1
+    bezier = menu_accel, 0.38, 0.04, 1, 0.07
+    bezier = easeInOutCirc, 0.85, 0, 0.15, 1
+    bezier = easeOutCirc, 0, 0.55, 0.45, 1
+    bezier = easeOutExpo, 0.16, 1, 0.3, 1
+    bezier = softAcDecel, 0.26, 0.26, 0.15, 1
+    bezier = md2, 0.4, 0, 0.2, 1 # use with .2s duration
+    # Animation configs
+    animation = windows, 1, 3, md3_decel, popin 60%
+    animation = windowsIn, 1, 3, md3_decel, popin 60%
+    animation = windowsOut, 1, 3, md3_accel, popin 60%
+    animation = border, 1, 10, default
+    animation = fade, 1, 3, md3_decel
+    # animation = layers, 1, 2, md3_decel, slide
+    animation = layersIn, 1, 3, menu_decel, slide
+    animation = layersOut, 1, 1.6, menu_accel
+    animation = fadeLayersIn, 1, 2, menu_decel
+    animation = fadeLayersOut, 1, 4.5, menu_accel
+    animation = workspaces, 1, 7, menu_decel, slide
+    # animation = workspaces, 1, 2.5, softAcDecel, slide
+    # animation = workspaces, 1, 7, menu_decel, slidefade 15%
+    # animation = specialWorkspace, 1, 3, md3_decel, slidefadevert 15%
+    animation = specialWorkspace, 1, 3, md3_decel, slidevert
+}
+#+end_src
+
+***** fast.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/fast.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Fast"
+# credit https://github.com/mylinuxforwork/dotfiles
+# ----------------------------------------------------- 
+animations {
+    enabled = true
+    bezier = linear, 0, 0, 1, 1
+    bezier = md3_standard, 0.2, 0, 0, 1
+    bezier = md3_decel, 0.05, 0.7, 0.1, 1
+    bezier = md3_accel, 0.3, 0, 0.8, 0.15
+    bezier = overshot, 0.05, 0.9, 0.1, 1.1
+    bezier = crazyshot, 0.1, 1.5, 0.76, 0.92 
+    bezier = hyprnostretch, 0.05, 0.9, 0.1, 1.0
+    bezier = fluent_decel, 0.1, 1, 0, 1
+    bezier = easeInOutCirc, 0.85, 0, 0.15, 1
+    bezier = easeOutCirc, 0, 0.55, 0.45, 1
+    bezier = easeOutExpo, 0.16, 1, 0.3, 1
+    animation = windows, 1, 3, md3_decel, popin 60%
+    animation = border, 1, 10, default
+    animation = fade, 1, 2.5, md3_decel
+    animation = workspaces, 1, 3.5, easeOutExpo, slide
+    animation = specialWorkspace, 1, 3, md3_decel, slidevert
+}
+
+#+end_src
+
+***** high.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/high.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "High"
+# credit https://github.com/mylinuxforwork/dotfiles
+# ----------------------------------------------------- 
+
+animations {
+    enabled = true
+    bezier = wind, 0.05, 0.9, 0.1, 1.05
+    bezier = winIn, 0.1, 1.1, 0.1, 1.1
+    bezier = winOut, 0.3, -0.3, 0, 1
+    bezier = liner, 1, 1, 1, 1
+    animation = windows, 1, 6, wind, slide
+    animation = windowsIn, 1, 6, winIn, slide
+    animation = windowsOut, 1, 5, winOut, slide
+    animation = windowsMove, 1, 5, wind, slide
+    animation = border, 1, 1, liner
+    animation = borderangle, 1, 30, liner, loop
+    animation = fade, 1, 10, default
+    animation = workspaces, 1, 5, wind
+}
+
+#+end_src
+
+***** ja.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/ja.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Ja"
+# credit https://github.com/JaKooLit/Hyprland-Dots
+# ----------------------------------------------------- 
+
+animations {
+  enabled = yes
+
+  bezier = wind, 0.05, 0.9, 0.1, 1.05
+  bezier = winIn, 0.1, 1.1, 0.1, 1.1
+  bezier = winOut, 0.3, -0.3, 0, 1
+  bezier = liner, 1, 1, 1, 1
+  bezier = overshot, 0.05, 0.9, 0.1, 1.05
+  bezier = smoothOut, 0.5, 0, 0.99, 0.99
+  bezier = smoothIn, 0.5, -0.5, 0.68, 1.5
+  
+  animation = windows, 1, 6, wind, slide
+  animation = windowsIn, 1, 5, winIn, slide
+  animation = windowsOut, 1, 3, smoothOut, slide
+  animation = windowsMove, 1, 5, wind, slide
+  animation = border, 1, 1, liner
+  #animation = borderangle, 1, 180, liner, loop #used by rainbow borders and rotating colors
+  animation = fade, 1, 3, smoothOut
+  animation = workspaces, 1, 5, overshot
+  
+  # animations for -git or version >0.42.0
+  animation = workspacesIn, 1, 5, winIn, slide
+  animation = workspacesOut, 1, 5, winOut, slide
+}
+
+#+end_src
+
+***** me-1.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/me-1.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Me-1"
+# credit https://github.com/mahaveergurjar
+# ----------------------------------------------------- 
+
+animations {
+    enabled = true
+    # Animation curves
+    bezier = wind, 0.05, 0.9, 0.1, 1.05
+    bezier = winIn, 0.1, 1.1, 0.1, 1.1
+    bezier = winOut, 0.3, -0.3, 0, 1
+    bezier = liner, 1, 1, 1, 1
+    # bezier = linear, 0, 0, 1, 1
+    bezier = md3_standard, 0.2, 0, 0, 1
+    bezier = md3_decel, 0.05, 0.7, 0.1, 1
+    bezier = md3_accel, 0.3, 0, 0.8, 0.15
+    bezier = overshot, 0.05, 0.9, 0.1, 1.1
+    bezier = crazyshot, 0.1, 1.5, 0.76, 0.92 
+    bezier = hyprnostretch, 0.05, 0.9, 0.1, 1.0
+    bezier = menu_decel, 0.1, 1, 0, 1
+    bezier = menu_accel, 0.38, 0.04, 1, 0.07
+    bezier = easeInOutCirc, 0.85, 0, 0.15, 1
+    bezier = easeOutCirc, 0, 0.55, 0.45, 1
+    bezier = easeOutExpo, 0.16, 1, 0.3, 1
+    bezier = softAcDecel, 0.26, 0.26, 0.15, 1
+    bezier = md2, 0.4, 0, 0.2, 1 # use with .2s duration
+    
+    # Animation configs
+    # animation = windows, 1, 3, md3_decel, popin 60%
+    # animation = windowsIn, 1, 3, md3_decel, popin 60%
+    # animation = windowsOut, 1, 3, md3_accel, popin 60%
+    # animation = windows, 1, 6, wind, slide
+    animation = border, 1, 1, liner
+    animation = borderangle, 1, 30, liner, loop
+    animation = windows, 1, 6, wind, slide
+    animation = windowsIn, 1, 6, winIn, slide
+    animation = windowsOut, 1, 5, winOut, slide
+    animation = windowsMove, 1, 5, wind, slide
+
+    # animation = border, 1, 10, default
+    animation = fade, 1, 3, md3_decel
+    # animation = layers, 1, 2, md3_decel, slide
+    animation = layersIn, 1, 3, menu_decel, slide
+    animation = layersOut, 1, 1.6, menu_accel
+    animation = fadeLayersIn, 1, 2, menu_decel
+    animation = fadeLayersOut, 1, 4.5, menu_accel
+    animation = workspaces, 1, 7, menu_decel, slide
+    animation = workspaces, 1, 5, wind
+    # animation = workspaces, 1, 2.5, softAcDecel, slide
+    # animation = workspaces, 1, 7, menu_decel, slidefade 15%
+    animation = specialWorkspace, 1, 3, md3_decel, slidefadevert 15%
+    animation = specialWorkspace, 1, 3, md3_decel, slidevert
+}
+#+end_src
+
+***** me-2.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/me-2.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Me-2"
+# credit https://github.com/mahaveergurjar
+# ----------------------------------------------------- 
+
+animations {
+    enabled = true
+    # Animation curves
+    bezier = wind, 0.05, 0.9, 0.1, 1.05
+    bezier = winIn, 0.1, 1.1, 0.1, 1.1
+    bezier = winOut, 0.3, -0.3, 0, 1
+    bezier = liner, 1, 1, 1, 1
+    bezier = md3_standard, 0.2, 0, 0, 1
+    bezier = md3_decel, 0.05, 0.7, 0.1, 1
+    bezier = md3_accel, 0.3, 0, 0.8, 0.15
+    bezier = overshot, 0.05, 0.9, 0.1, 1.1
+    bezier = crazyshot, 0.1, 1.5, 0.76, 0.92 
+    bezier = hyprnostretch, 0.05, 0.9, 0.1, 1.0
+    bezier = menu_decel, 0.1, 1, 0, 1
+    bezier = menu_accel, 0.38, 0.04, 1, 0.07
+    bezier = easeInOutCirc, 0.85, 0, 0.15, 1
+    bezier = easeOutCirc, 0, 0.55, 0.45, 1
+    bezier = easeOutExpo, 0.16, 1, 0.3, 1
+    bezier = softAcDecel, 0.26, 0.26, 0.15, 1
+    bezier = md2, 0.4, 0, 0.2, 1 # use with .2s duration
+
+    bezier = OutBack, 0.34, 1.56, 0.64, 1   
+    bezier = easeInOutCirc, 0.85, 0, 0.15, 1   
+
+    animation = border, 1, 1, liner
+    animation = borderangle, 1, 30, liner, loop
+    # animation = windows, 1, 6, wind, slide
+    animation = windowsIn, 1, 6, winIn, slide
+    # animation = windowsOut, 1, 5, winOut, slide
+    animation = windows, 1, 5, easeInOutCirc   
+    animation = windowsOut, 1, 5, OutBack  
+    animation = windowsMove, 1, 5, wind, slide
+    animation = fade, 1, 3, md3_decel
+    animation = layersIn, 1, 3, menu_decel, slide
+    animation = layersOut, 1, 1.6, menu_accel
+    animation = fadeLayersIn, 1, 2, menu_decel
+    animation = fadeLayersOut, 1, 4.5, menu_accel
+    animation = workspaces, 1, 7, menu_decel, slide
+    animation = workspaces, 1, 5, wind
+    animation = specialWorkspace, 1, 3, md3_decel, slidefadevert 15%
+    animation = specialWorkspace, 1, 3, md3_decel, slidevert
+}
+
+#+end_src
+
+***** minimal-1.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/minimal-1.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Minimal-1"
+# ----------------------------------------------------- 
+
+animations {
+  enabled = true
+
+  # █▄▄ █▀▀ ▀█ █ █▀▀ █▀█   █▀▀ █░█ █▀█ █░█ █▀▀
+  # █▄█ ██▄ █▄ █ ██▄ █▀▄   █▄▄ █▄█ █▀▄ ▀▄▀ ██▄
+  bezier = wind, 0.05, 0.9, 0.1, 1.05
+  bezier = winIn, 0.1, 1.1, 0.1, 1.1
+  bezier = winOut, 0.3, -0.3, 0, 1
+  bezier = liner, 1, 1, 1, 1
+
+  
+  #▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+  #█▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+  animation = windows, 1, 6, wind, slide
+  animation = windowsIn, 1, 6, winIn, slide
+  animation = windowsOut, 1, 5, winOut, slide
+  animation = windowsMove, 1, 5, wind, slide
+  animation = border, 1, 1, liner
+  animation = borderangle, 1, 30, liner, loop
+  animation = fade, 1, 10, default
+  animation = workspaces, 1, 5, wind
+}
+#+end_src
+
+***** minimal-2.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/minimal-2.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Minimal-2"
+# ----------------------------------------------------- 
+
+animations {
+    enabled = yes
+
+    bezier = quart, 0.25, 1, 0.5, 1
+
+    animation = windows, 1, 6, quart, slide
+    animation = border, 1, 6, quart
+    animation = borderangle, 1, 6, quart
+    animation = fade, 1, 6, quart
+    animation = workspaces, 1, 6, quart
+}
+
+#+end_src
+
+***** moving.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/moving.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Moving"
+# credit https://github.com/mylinuxforwork/dotfiles
+# ----------------------------------------------------- 
+
+animations {
+    enabled = true
+    bezier = overshot, 0.05, 0.9, 0.1, 1.05
+    bezier = smoothOut, 0.5, 0, 0.99, 0.99
+    bezier = smoothIn, 0.5, -0.5, 0.68, 1.5
+    animation = windows, 1, 5, overshot, slide
+    animation = windowsOut, 1, 3, smoothOut
+    animation = windowsIn, 1, 3, smoothOut
+    animation = windowsMove, 1, 4, smoothIn, slide
+    animation = border, 1, 5, default
+    animation = fade, 1, 5, smoothIn
+    animation = fadeDim, 1, 5, smoothIn
+    animation = workspaces, 1, 6, default
+}
+
+#+end_src
+
+***** optimized.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/optimized.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Optimized"
+# ----------------------------------------------------- 
+
+animations {
+    enabled = true
+    bezier = wind, 0.05, 0.85, 0.03, 0.97
+    bezier = winIn, 0.07, 0.88, 0.04, 0.99
+    bezier = winOut, 0.20, -0.15, 0, 1
+    bezier = liner, 1, 1, 1, 1
+    bezier = md3_standard, 0.12, 0, 0, 1
+    bezier = md3_decel, 0.05, 0.80, 0.10, 0.97
+    bezier = md3_accel, 0.20, 0, 0.80, 0.08
+    bezier = overshot, 0.05, 0.85, 0.07, 1.04
+    bezier = crazyshot, 0.1, 1.22, 0.68, 0.98
+    bezier = hyprnostretch, 0.05, 0.82, 0.03, 0.94
+    bezier = menu_decel, 0.05, 0.82, 0, 1
+    bezier = menu_accel, 0.20, 0, 0.82, 0.10
+    bezier = easeInOutCirc, 0.75, 0, 0.15, 1
+    bezier = easeOutCirc, 0, 0.48, 0.38, 1
+    bezier = easeOutExpo, 0.10, 0.94, 0.23, 0.98
+    bezier = softAcDecel, 0.20, 0.20, 0.15, 1
+    bezier = md2, 0.30, 0, 0.15, 1
+    
+    bezier = OutBack, 0.28, 1.40, 0.58, 1
+    bezier = easeInOutCirc, 0.78, 0, 0.15, 1
+
+    animation = border, 1, 1.6, liner
+    animation = borderangle, 1, 82, liner, loop
+    animation = windowsIn, 1, 3.2, winIn, slide
+    animation = windowsOut, 1, 2.8, easeOutCirc
+    animation = windowsMove, 1, 3.0, wind, slide
+    animation = fade, 1, 1.8, md3_decel
+    animation = layersIn, 1, 1.8, menu_decel, slide
+    animation = layersOut, 1, 1.5, menu_accel
+    animation = fadeLayersIn, 1, 1.6, menu_decel
+    animation = fadeLayersOut, 1, 1.8, menu_accel
+    animation = workspaces, 1, 4.0, menu_decel, slide
+    animation = specialWorkspace, 1, 2.3, md3_decel, slidefadevert 15%
+}
+#+end_src
+
+***** standard.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/standard.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Standard"
+# credit https://github.com/mylinuxforwork/dotfiles
+# ----------------------------------------------------- 
+
+animations {
+    enabled = true
+    bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+    animation = windows, 1, 7, myBezier
+    animation = windowsOut, 1, 7, default, popin 80%
+    animation = border, 1, 10, default
+    animation = borderangle, 1, 8, default
+    animation = fade, 1, 7, default
+    animation = workspaces, 1, 6, default
+}
+
+#+end_src
+
+***** theme.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/theme.conf
+# This file is generated by wallbash:animations.dcol
+
+# // ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# // █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+
+# See https://wiki.hyprland.org/Configuring/Animations/
+# credits: https://github.com/prasanthrangan/hyprdots
+
+animations {
+    enabled = yes
+    bezier = wind, 0.05, 0.9, 0.1, 1.05
+    bezier = winIn, 0.1, 1.1, 0.1, 1.1
+    bezier = winOut, 0.3, -0.3, 0, 1
+    bezier = liner, 1, 1, 1, 1
+    animation = windows, 1, 6, wind, slide
+    animation = windowsIn, 1, 6, winIn, slide
+    animation = windowsOut, 1, 5, winOut, slide
+    animation = windowsMove, 1, 5, wind, slide
+    animation = border, 1, 1, liner
+    animation = borderangle, 1, 30, liner, once
+    animation = fade, 1, 10, default
+    animation = workspaces, 1, 5, wind
+}
+#+end_src
+
+***** vertical.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/vertical.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Vertical"
+# ----------------------------------------------------- 
+
+animations {
+    bezier = fluent_decel, 0, 0.2, 0.4, 1
+    bezier = easeOutCirc, 0, 0.55, 0.45, 1
+    bezier = easeOutCubic, 0.33, 1, 0.68, 1
+    bezier = easeinoutsine, 0.37, 0, 0.63, 1
+
+    # Windows
+    animation = windowsIn, 1, 1.5, easeinoutsine, popin 60% # window open
+    animation = windowsOut, 1, 1.5, easeOutCubic, popin 60% # window close.
+    animation = windowsMove, 1, 1.5, easeinoutsine, slide # everything in between, moving, dragging, resizing.
+
+    # Fading
+    animation = fade, 1, 2.5, fluent_decel
+
+	animation = fadeLayersIn, 0
+    animation = border, 0
+
+
+	# Layers
+	animation = layers, 1, 1.5, easeinoutsine, popin
+
+    # Workspaces
+    #animation = workspaces, 1, 3, fluent_decel, slidefade 30% # styles: slide, slidevert, fade, slidefade, slidefadevert
+    animation = workspaces, 1, 3, fluent_decel, slidefadevert 30% # styles: slide, slidevert, fade, slidefade, slidefadevert
+
+	animation = specialWorkspace, 1, 2, fluent_decel, slidefade 10%
+}
+
+#+end_src
+
+***** myanim.conf
+This is my clone of dynamic.conf with a slower border loop animation.
+#+begin_src conf :tangle ~/.config/hypr/animations/myanim.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Dynamic"
+# credit https://github.com/mylinuxforwork/dotfiles
+# ----------------------------------------------------- 
+
+animations {
+    enabled = true
+    bezier = wind, 0.05, 0.9, 0.1, 1.05
+    bezier = winIn, 0.1, 1.1, 0.1, 1.1
+    bezier = winOut, 0.3, -0.3, 0, 1
+    bezier = liner, 1, 1, 1, 1
+    animation = windows, 1, 6, wind, slide
+    animation = windowsIn, 1, 6, winIn, slide
+    animation = windowsOut, 1, 5, winOut, slide
+    animation = windowsMove, 1, 5, wind, slide
+    animation = border, 1, 1, liner
+    animation = borderangle, 1,100, linear, loop
+    animation = fade, 1, 10, default
+    animation = workspaces, 1, 5, wind
+}
+
+#+end_src
+
+*** Selected Animation
+
+The animation that you wish to use can be configured here.
+
+#+begin_src conf :tangle ~/.config/hypr/hyprland.conf
+source = ~/.config/hypr/animations/myanim.conf
 #+end_src
 
 ** Layouts:
@@ -2632,5 +3284,33 @@ ILoveCandy
 #+end_src
 
 * Pacman Config =ENDS= here
+
+
+* GRUB Theme / Config =STARTS= here
+The GRUB configuration will be inspired by Google's Material Design System and also Microsoft's WinUI 3.
+A GRUB theme will be made available after the rest of the configuration is done as it's currently not a priority for me at the moment. 
+* GRUB Theme / Config =ENDS= here
+
+
+* SDDM Theme / Config =STARTS= here
+The SDDM configuration will be inspired by Google's Material Design System and also Microsoft's WinUI 3.
+A SDDM theme will be made available after the rest of the configuration is done as it's currently not a priority for me at the moment. 
+
+* SDDM Theme / Config =ENDS= here
+
+* Neovim Config =STARTS= here
+Currently, I'm using NVChad for the neovim configuration. Along with @Axenide's configuration for pywal colors in NVChad. I won't tinker much here, as the config is pretty nice. I only use vim / neovim in case I'm too lazy to open emacs using my keybinding. But, I may make my own neovim configuration that's similar to my emacs configuration at some point of time. 
+* Neovim Config =ENDS= here
+
+
+
+************************* So, that's about it! 
+************************* More features planned ahead!  
+
+
+*** Coming up soon ... .. . ..  .... 
+*** Flutter based app ecosystem for my dots. Install, Upgrade, Configure etc. ... 
+*** Maybe like an ML4W fork, but better. Cause it's completely mine. And it will look better than what GTK can ever be. + Cross Platform. Yes, these dots will come to Windows, macOS, Android and more. Just like how @Iniox did it with his dots. 
+
 
 
