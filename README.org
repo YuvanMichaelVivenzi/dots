@@ -1,5 +1,3 @@
-* HUGE WORK IN PROGRESS
-
 #+TITLE: YMV's Dotfiles
 #+AUTHOR: Yuvan Michael Vivenzi
 #+STARTUP: showeverything
@@ -62,6 +60,8 @@
 - [[#gtk-config-ends-here][GTK Config =ENDS= here]]
 - [[#qt-config-starts-here][QT Config =STARTS= here]]
 - [[#qt-config-ends-here][QT Config =ENDS= here]]
+- [[#pacman-config-starts-here][Pacman Config =STARTS= here]]
+- [[#pacman-config-ends-here][Pacman Config =ENDS= here]]
 
 **  MANAGEMENT :
 This is an open source project hosted on GitHub. (https://www.github.com/) hosted on the url (https://www.github.com/YuvanMichaelVivenzi/dots)
@@ -576,7 +576,6 @@ This is stuff that handles some of the values like =GAPS=, =BORDERS=, =LAYOUT=, 
 windowrulev2 = opacity 0.90 override 0.90 override, class:.*
 windowrulev2 = opacity 1 override 1 override, class: zen
 
-
 general {
     gaps_in = 5
     gaps_out = 10
@@ -729,6 +728,7 @@ $mainMod = SUPER # Sets "Windows" key as main modifier
 bind = $mainMod, W, exec, $browser
 bind = $mainMod, L, exec, hyprlock
 bind = $mainMod, E, exec, nautilus
+bind = $mainMod, T, togglefloating
 bind = $mainMod+Alt, E, exec, pcmanfm
 bind = $mainMod+Shift, W, exec, ~/wallpapers/wallpaperchange.sh && ~/wallpapers/wallpaperchange2.sh
 bind = $mainMod+Alt, W, exec, ~/wallpapers/wallpaperchange2.sh
@@ -799,7 +799,6 @@ Examples on setting rules for certain windows and workspaces.
 # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
 # See https://wiki.hyprland.org/Configuring/Workspace-Rules/ for workspace rules
 
-windowrulev2 = opacity 0.89 override 0.89 override, class:.*
 
 # Example windowrule v1
 # windowrule = float, ^(kitty)$
@@ -839,7 +838,7 @@ italic_font auto
 bold_italic_font auto
 enable_audio_bell no
 font_size 20.0
-window_padding_width 25
+window_padding_width 10
 cursor_trail 1
 background_opacity 0.60
 hide_window_decorations yes
@@ -1298,7 +1297,7 @@ This is the part that handles the appearence of widgets in waybar.
  * {
     border: none;
     border-radius: 0px;
-    font-family: "JetBrainsMono Nerd Font";
+    font-family: "JetBrainsMono Nerd Font Propo";
     font-weight: bold;
     font-size: 10px;
     min-height: 10px;
@@ -1789,6 +1788,7 @@ I use DT's fish config. Just with a few aliases of my own.
 # First line removes the path; second line sets it.  Without the first line,
 # your path gets massive and fish becomes very slow.
 set -e fish_user_paths
+set -gx PATH $PATH ~/development/flutter/bin
 set -U fish_user_paths $HOME/.bin  $HOME/.local/bin $HOME/.config/emacs/bin $HOME/Applications /var/lib/flatpak/exports/bin/ $fish_user_paths
 
 ### EXPORT ###
@@ -1929,6 +1929,7 @@ alias u='sudo pacman -Syu && yay -Syu && yay -Syu --devel' # Bleeding edge :D
 alias s='sudo pacman -Ss '
 alias sa='yay -Ss '
 alias g='git clone '
+alias v='nvim '
 alias c='clear '
 alias mi='playerctl metadata --format "{{title}} - {{artist}}"'
 
@@ -2196,6 +2197,7 @@ My own matugen colored emacs theme called material.
 ;; - Refined org-mode styling with hidden asterisks
 ;; - Enhanced contrast and readability
 ;; - Seamless integration of source blocks with consistent styling
+;; - Font settings removed to use those from ~/.config/emacs/config.org
 
 ;;; Code:
 
@@ -2328,15 +2330,15 @@ Values < 1 darken, values > 1 lighten."
    `(mode-line-emphasis ((t (:foreground ,primary :weight bold))))
    `(mode-line-highlight ((t (:foreground ,primary :box nil))))
    
-   ;; Improved Source blocks - make them integrated with the theme
-   `(org-block ((t (:background ,surface-container-low :extend t :inherit fixed-pitch))))
-   `(org-block-begin-line ((t (:background ,surface-container-low :foreground ,primary-fixed-dim :extend t :slant italic :inherit fixed-pitch))))
-   `(org-block-end-line ((t (:background ,surface-container-low :foreground ,primary-fixed-dim :extend t :slant italic :inherit fixed-pitch))))
-   `(org-code ((t (:background ,surface-container-low :foreground ,tertiary-fixed :inherit fixed-pitch))))
-   `(org-verbatim ((t (:background ,surface-container-low :foreground ,primary-fixed :inherit fixed-pitch))))
+   ;; Improved Source blocks - making them integrated with the theme but removing font family references
+   `(org-block ((t (:background ,surface-container-low :extend t))))
+   `(org-block-begin-line ((t (:background ,surface-container-low :foreground ,primary-fixed-dim :extend t :slant italic))))
+   `(org-block-end-line ((t (:background ,surface-container-low :foreground ,primary-fixed-dim :extend t :slant italic))))
+   `(org-code ((t (:background ,surface-container-low :foreground ,tertiary-fixed))))
+   `(org-verbatim ((t (:background ,surface-container-low :foreground ,primary-fixed))))
    `(org-meta-line ((t (:foreground ,outline-color :slant italic))))
    
-   ;; Org mode with hidden asterisks
+   ;; Org mode with hidden asterisks - keeping size adjustments but removing font family settings
    `(org-level-1 ((t (:foreground ,primary :weight bold :height 1.2))))
    `(org-level-2 ((t (:foreground ,primary-container :weight bold :height 1.1))))
    `(org-level-3 ((t (:foreground ,secondary :weight bold))))
@@ -2352,9 +2354,9 @@ Values < 1 darken, values > 1 lighten."
    `(org-headline-done ((t (:foreground ,on-surface-variant))))
    `(org-hide ((t (:foreground ,bg)))) ;; Hide leading asterisks
    `(org-ellipsis ((t (:foreground ,tertiary :underline nil)))) ;; Style for folded content indicator
-   `(org-table ((t (:foreground ,secondary-fixed :inherit fixed-pitch))))
-   `(org-formula ((t (:foreground ,tertiary :inherit fixed-pitch))))
-   `(org-checkbox ((t (:foreground ,primary :weight bold :inherit fixed-pitch))))
+   `(org-table ((t (:foreground ,secondary-fixed))))
+   `(org-formula ((t (:foreground ,tertiary))))
+   `(org-checkbox ((t (:foreground ,primary :weight bold))))
    `(org-date ((t (:foreground ,secondary-fixed :underline t))))
    `(org-special-keyword ((t (:foreground ,on-surface-variant :slant italic))))
    `(org-tag ((t (:foreground ,outline-color :weight normal))))
@@ -2407,9 +2409,9 @@ Values < 1 darken, values > 1 lighten."
    `(which-key-group-description-face ((t (:foreground ,secondary))))
    `(which-key-special-key-face ((t (:foreground ,tertiary :weight bold))))
    
-   ;; Line numbers
-   `(line-number ((t (:foreground ,outline-variant :inherit fixed-pitch))))
-   `(line-number-current-line ((t (:foreground ,primary :weight bold :inherit fixed-pitch))))
+   ;; Line numbers - removing font family references
+   `(line-number ((t (:foreground ,outline-variant))))
+   `(line-number-current-line ((t (:foreground ,primary :weight bold))))
    
    ;; Parenthesis matching
    `(sp-show-pair-match-face ((t (:background ,primary-container :foreground ,on-primary-container))))
@@ -2460,16 +2462,16 @@ Values < 1 darken, values > 1 lighten."
    `(eshell-ls-special ((t (:foreground ,secondary-fixed))))
    `(eshell-ls-unreadable ((t (:foreground ,outline-variant))))
    
-   ;; Improved markdown mode
+   ;; Improved markdown mode - removed font family references
    `(markdown-header-face ((t (:foreground ,primary :weight bold))))
    `(markdown-header-face-1 ((t (:foreground ,primary :weight bold :height 1.2))))
    `(markdown-header-face-2 ((t (:foreground ,primary-container :weight bold :height 1.1))))
    `(markdown-header-face-3 ((t (:foreground ,secondary :weight bold))))
    `(markdown-header-face-4 ((t (:foreground ,secondary-container :weight bold))))
-   `(markdown-inline-code-face ((t (:foreground ,tertiary-fixed :background ,surface-container-low :inherit fixed-pitch))))
-   `(markdown-code-face ((t (:background ,surface-container-low :extend t :inherit fixed-pitch))))
-   `(markdown-pre-face ((t (:background ,surface-container-low :inherit fixed-pitch))))
-   `(markdown-table-face ((t (:foreground ,secondary-fixed :inherit fixed-pitch))))
+   `(markdown-inline-code-face ((t (:foreground ,tertiary-fixed :background ,surface-container-low))))
+   `(markdown-code-face ((t (:background ,surface-container-low :extend t))))
+   `(markdown-pre-face ((t (:background ,surface-container-low))))
+   `(markdown-table-face ((t (:foreground ,secondary-fixed))))
    
    ;; Web mode
    `(web-mode-html-tag-face ((t (:foreground ,primary))))
@@ -2505,13 +2507,6 @@ Values < 1 darken, values > 1 lighten."
    `(info-menu-header ((t (:foreground ,primary :weight bold))))
    `(info-menu-star ((t (:foreground ,primary))))
    `(info-node ((t (:foreground ,tertiary :weight bold))))
-   
-   ;; Fixed-pitch faces
-   `(fixed-pitch ((t (:family "monospace"))))
-   `(fixed-pitch-serif ((t (:family "monospace serif"))))
-   
-   ;; Variable-pitch face
-   `(variable-pitch ((t (:family "sans serif"))))
    ))
 
 ;; Add org-mode hooks for hiding leading stars
@@ -2629,4 +2624,12 @@ Same code block for the dark version.
 The qt apps configuration is automatically made by matugen. Install qt5ct and qt6ct and select the style as Fusion and the color pallete as matugen. You should be good to go. There is also a possiblility that previously configured kde themes and kvantum themes may conflict with the ones set by this config. So, for a optimal better looking experience, it is recommended that you disable those conflicting themes first. 
 * QT Config =ENDS= here
 
-# dots
+* Pacman Config =STARTS= here
+I usually add the following 1 line since parallel downloads is the default in arch now. And color is the only uncomment required. 
+#+begin_src conf
+ILoveCandy
+#+end_src
+
+* Pacman Config =ENDS= here
+
+
