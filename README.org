@@ -3408,10 +3408,10 @@ return {
 * INSTALLATION INSTRUCTIONS
 PLEASE NOTE THAT THE INSTALLATION OF THESE DOTFILES IS NOT RECOMMENDED. YOU CAN INSTALL IT, IT WILL WORK SPLENDID. BUT IT MAY ALSO NOT. BUT I CAN GUARANTEE THAT 99% IT WILL WORK. THE OTHER 1% WELL, PROBABLY ISOLATED MINOR CASES OF YOU HAVING CONFLICTING PACKAGES AND SUCH
 
-** BACKUP
+**  BACKUP
 BACKUP YOUR EXISTING SETUP. CRUCIAL, CRUCIAL, CRUCIAL STEP!!!!! IF NOT, YOU'RE IN THE MERCY OF YOUR DOOM. (Just kidding, you'll spend the entire day fixing stuff. That's all. And I don't want you to do that. So, please make sure you have a backup, okay? .. okay? . Fine, as you say ... .. . .. ...)
 
-** HAVE A TERMINAL READY, DO ALL THIS IN A SINGLE WORKSPACE.
+*** HAVE A TERMINAL READY, DO ALL THIS IN A SINGLE WORKSPACE.
 You'll have to reboot your system after this, so, please save your files. 
 
 ** 1. Set up CHAOTIC AUR
@@ -3467,7 +3467,7 @@ colorz
 #+end_src
 
 
-** Make the following directories
+** 3. Make the following directories
 These are the required folders
 #+begin_src txt
 mkdir ~/.config/rofi/
@@ -3480,7 +3480,7 @@ mkdir ~/.config/fish/
 mkdir ~/.config/waypaper/
 #+end_src
 
-** Cloning repos + Wallpapers (CRUCIAL)
+** 4. Cloning repos + Wallpapers (CRUCIAL)
 Do the following commands
 #+begin_src bash
 cd ~
@@ -3492,22 +3492,22 @@ cp -r .config/emacs/ ~/.config/
 #+end_src
 
 
-** Launch emacs and set it up
+** 5. Launch emacs and set it up
 And let the setup process continue, you might have to restart emacs a couple of times. 
 
-** Clone this repo and change to it
+** 6. Clone this repo and change to it
 #+begin_src bash
 git clone https://github.com/YuvanMichaelVivenzi/dots
 cd dots/
 #+end_src
 
-** Open README.org in emacs and tangle the files
+** 7. Open README.org in emacs and tangle the files
 Open emacs and type the keybinding, =SPC .=
 =SPC= means the spacebar and =.= means the dot button on the keyboard.
 Type the path where you cloned this repository and open =README.org=
 Tangle all code blocks by =Control+C Control+V t= . Your setup will break! Use the terminal!
 
-** Make the following files executable
+** 8. Make the following files executable
 #+begin_src bash
 chmod +x ~/.config/waybar/cava.sh
 chmod +x ~/.config/rofi/scripts/powermenu.sh
@@ -3516,11 +3516,12 @@ chmod +x ~/wallpapers/wallpaperchange2.sh
 chmod +x ~/wallpapers/wallpaperchange3.sh
 #+end_src
 
-** Reboot
+** 9. Reboot
 
 That should be about it, Reboot to get the new dotfiles up and running.
 
-
+** 10. Encounter any issues? Immediately report here!
+Please report issues about the dotfiles so that it can be better for everyone and people using linux have better rices. 
 
 
 
