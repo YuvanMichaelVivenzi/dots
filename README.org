@@ -76,13 +76,14 @@
   - [[#have-a-terminal-ready-do-all-this-in-a-single-workspace][HAVE A TERMINAL READY, DO ALL THIS IN A SINGLE WORKSPACE.]]
   - [[#1-set-up-chaotic-aur][1. Set up CHAOTIC AUR]]
   - [[#2-install-following-packages][2. INSTALL FOLLOWING PACKAGES]]
-  - [[#make-the-following-directories][Make the following directories]]
-  - [[#cloning-repos--wallpapers-crucial][Cloning repos + Wallpapers (CRUCIAL)]]
-  - [[#launch-emacs-and-set-it-up][Launch emacs and set it up]]
-  - [[#clone-this-repo-and-change-to-it][Clone this repo and change to it]]
-  - [[#open-readmeorg-in-emacs-and-tangle-the-files][Open README.org in emacs and tangle the files]]
-  - [[#make-the-following-files-executable][Make the following files executable]]
-  - [[#reboot][Reboot]]
+  - [[#3-make-the-following-directories][3. Make the following directories]]
+  - [[#4-cloning-repos--wallpapers-crucial][4. Cloning repos + Wallpapers (CRUCIAL)]]
+  - [[#5-launch-emacs-and-set-it-up][5. Launch emacs and set it up]]
+  - [[#6-clone-this-repo-and-change-to-it][6. Clone this repo and change to it]]
+  - [[#7-open-readmeorg-in-emacs-and-tangle-the-files][7. Open README.org in emacs and tangle the files]]
+  - [[#8-make-the-following-files-executable][8. Make the following files executable]]
+  - [[#9-reboot][9. Reboot]]
+  - [[#10-encounter-any-issues-immediately-report-here][10. Encounter any issues? Immediately report here!]]
 
 **  MANAGEMENT :
 This is an open source project hosted on GitHub. (https://www.github.com/) hosted on the url (https://www.github.com/YuvanMichaelVivenzi/dots)
@@ -3408,10 +3409,10 @@ return {
 * INSTALLATION INSTRUCTIONS
 PLEASE NOTE THAT THE INSTALLATION OF THESE DOTFILES IS NOT RECOMMENDED. YOU CAN INSTALL IT, IT WILL WORK SPLENDID. BUT IT MAY ALSO NOT. BUT I CAN GUARANTEE THAT 99% IT WILL WORK. THE OTHER 1% WELL, PROBABLY ISOLATED MINOR CASES OF YOU HAVING CONFLICTING PACKAGES AND SUCH
 
-**  BACKUP
+** BACKUP
 BACKUP YOUR EXISTING SETUP. CRUCIAL, CRUCIAL, CRUCIAL STEP!!!!! IF NOT, YOU'RE IN THE MERCY OF YOUR DOOM. (Just kidding, you'll spend the entire day fixing stuff. That's all. And I don't want you to do that. So, please make sure you have a backup, okay? .. okay? . Fine, as you say ... .. . .. ...)
 
-*** HAVE A TERMINAL READY, DO ALL THIS IN A SINGLE WORKSPACE.
+** HAVE A TERMINAL READY, DO ALL THIS IN A SINGLE WORKSPACE.
 You'll have to reboot your system after this, so, please save your files. 
 
 ** 1. Set up CHAOTIC AUR
@@ -3522,6 +3523,8 @@ That should be about it, Reboot to get the new dotfiles up and running.
 
 ** 10. Encounter any issues? Immediately report here!
 Please report issues about the dotfiles so that it can be better for everyone and people using linux have better rices. 
+
+
 
 
 
