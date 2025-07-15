@@ -1,0 +1,3513 @@
+#+TITLE: YMV's Dotfiles
+#+AUTHOR: Yuvan Michael Vivenzi
+#+STARTUP: showeverything
+
+*** INSTALLATION INSTRUCTIONS AT THE END, (SEE LAST ENTRY IN TABLE OF CONTENTS)
+
+*** BEST VIEWED USING EMACS ORG MODE THAT IS SET UP CORRECTLY * 
+*** Org documents are my preferred way. This file is purposely bloated as its written more as a guide than a config to use. And it serves as valuable documentation for me *
+
+* Table Of Contents :toc:
+  -  [[#management-][MANAGEMENT :]]
+- [[#all-trademarks-are-the-properties-of-their-respective-owners--][ALL TRADEMARKS ARE THE PROPERTIES OF THEIR RESPECTIVE OWNERS. ... *]]
+- [[#credits][Credits:]]
+- [[#a-clear-warning][A CLEAR WARNING]]
+- [[#so][SO,]]
+- [[#a-word-of-advice][A word of advice]]
+- [[#hello-welcome-to-my-dots][Hello! Welcome to my dots!]]
+  - [[#affected-programs][Affected Programs:]]
+- [[#a-serious-note][A SERIOUS NOTE]]
+- [[#matugen-config-starts-here][Matugen Config =STARTS= here]]
+  - [[#templates][Templates]]
+  - [[#configtoml-for-matugen][Config.toml for Matugen]]
+- [[#matugen-config-ends-here][Matugen Config =ENDS= here]]
+- [[#hyprland-config-starts-here][Hyprland Config =STARTS= Here]]
+  - [[#sources][Sources:]]
+  - [[#monitors][Monitors]]
+  - [[#variables-my-programs][Variables (My Programs)]]
+  - [[#autostart][Autostart]]
+  - [[#environment-variables][Environment Variables]]
+  - [[#look-and-feel][Look and Feel]]
+  - [[#layouts][Layouts:]]
+  - [[#inputs][Inputs]]
+  - [[#keybindings][Keybindings]]
+  - [[#window-rules][Window rules]]
+- [[#hyprland-config-ends-here][Hyprland Config =ENDS= here]]
+- [[#kitty-config-starts-here][Kitty Config =STARTS= here]]
+- [[#kitty-config-ends-here][Kitty Config =ENDS= here]]
+- [[#waybar-config-starts-here][Waybar Config =STARTS= here]]
+  - [[#configjsonc][Config.jsonc]]
+  - [[#style-for-waybar][Style for waybar]]
+  - [[#waybar-scripts][Waybar Scripts]]
+- [[#waybar-config-ends-here][Waybar Config =ENDS= here]]
+- [[#hyprlock-config-starts-here][Hyprlock Config =STARTS= here]]
+- [[#hyprlock-config-ends-here][Hyprlock Config =ENDS= here]]
+- [[#fish-config-starts-here][Fish Config =STARTS= here]]
+- [[#fish-config-ends-here][Fish Config =ENDS= here]]
+- [[#rofi-config-starts-here][Rofi Config =STARTS= here]]
+  - [[#rofi-scripts][Rofi scripts]]
+  - [[#rofi-theme][Rofi Theme]]
+- [[#rofi-config-ends-here][Rofi Config =ENDS= here]]
+- [[#emacs-config-starts-here][Emacs Config =STARTS= here]]
+- [[#beacon][BEACON]]
+  - [[#emacs-theme][Emacs theme]]
+- [[#emacs-config-ends-here][Emacs Config =ENDS= here]]
+- [[#wallpapers-config-starts-here][Wallpapers Config =STARTS= here]]
+  - [[#waypaper-config-starts-here][Waypaper Config =STARTS= here]]
+  - [[#waypaper-config-ends-here][Waypaper Config =ENDS= here]]
+- [[#wallpapers-config-ends-here][Wallpapers Config =ENDS= here]]
+- [[#gtk-config-starts-here][GTK Config =STARTS= here]]
+  - [[#gtk3][GTK3]]
+  - [[#gtk4][GTK4]]
+- [[#gtk-config-ends-here][GTK Config =ENDS= here]]
+- [[#qt-config-starts-here][QT Config =STARTS= here]]
+- [[#qt-config-ends-here][QT Config =ENDS= here]]
+- [[#pacman-config-starts-here][Pacman Config =STARTS= here]]
+- [[#pacman-config-ends-here][Pacman Config =ENDS= here]]
+- [[#grub-theme--config-starts-here][GRUB Theme / Config =STARTS= here]]
+- [[#grub-theme--config-ends-here][GRUB Theme / Config =ENDS= here]]
+- [[#sddm-theme--config-starts-here][SDDM Theme / Config =STARTS= here]]
+- [[#sddm-theme--config-ends-here][SDDM Theme / Config =ENDS= here]]
+- [[#neovim-config-starts-here][Neovim Config =STARTS= here]]
+  - [[#plugins][Plugins]]
+- [[#neovim-config-ends-here][Neovim Config =ENDS= here]]
+- [[#installation-instructions][INSTALLATION INSTRUCTIONS]]
+  - [[#backup][BACKUP]]
+  - [[#have-a-terminal-ready-do-all-this-in-a-single-workspace][HAVE A TERMINAL READY, DO ALL THIS IN A SINGLE WORKSPACE.]]
+  - [[#1-set-up-chaotic-aur][1. Set up CHAOTIC AUR]]
+  - [[#2-install-following-packages][2. INSTALL FOLLOWING PACKAGES]]
+  - [[#3-make-the-following-directories][3. Make the following directories]]
+  - [[#4-cloning-repos--wallpapers-crucial][4. Cloning repos + Wallpapers (CRUCIAL)]]
+  - [[#5-launch-emacs-and-set-it-up][5. Launch emacs and set it up]]
+  - [[#6-clone-this-repo-and-change-to-it][6. Clone this repo and change to it]]
+  - [[#7-open-readmeorg-in-emacs-and-tangle-the-files][7. Open README.org in emacs and tangle the files]]
+  - [[#8-make-the-following-files-executable][8. Make the following files executable]]
+  - [[#9-reboot][9. Reboot]]
+  - [[#10-encounter-any-issues-immediately-report-here][10. Encounter any issues? Immediately report here!]]
+
+**  MANAGEMENT :
+This is an open source project hosted on GitHub. (https://www.github.com/) hosted on the url (https://www.github.com/YuvanMichaelVivenzi/dots)
+=Issues= are for =real issues only=
+=Discussions= are for other stuff =yes, put feature requests as discussions=
+=Pull Requests= are for =NON BREAKING CHANGES=
+for breaking changes start a =Discussion=
+
+**** Relevant links are kept as up to date as possible, if they don't work, or are outdated, make a discussion or a pull request. There are many links and I can't keep checking them all the time. 
+
+
+
+* ALL TRADEMARKS ARE THE PROPERTIES OF THEIR RESPECTIVE OWNERS. ... *
+
+
+
+* Credits: 
+**** These guys deserve to be here, they are the pillars of this project.
+This config wouldn't be possible without the help of these amazing projects. 
+1. Derek Taylor's (Goes by -> [DT]) Configuration files >> https://www.gitlab.com/dwt1/dotfiles
+2. Stephan Raabe's (ML4W) dotfiles >> https://github.com/mylinuxforwork/dotfiles
+3. (Prasanthrangan and kRHYME7)'s hyprdots and HyDE-Project >> https://github.com/HyDE-Project/HyDE
+4. Rubiin's Dotfiles >> https://github.com/rubiin/dotfiles
+5. All Linux Distributions and the Linux Kernel and other supporting open source projects. 
+
+
+
+* A CLEAR WARNING 
+
+Someone did a better job than me, thanks @rubiin for this amazing paragraph.  
+
+**** Warning: Installing these dotfiles may cause unexpected side effects, including but not limited to:
+
+***** Spontaneous Joy: You may find yourself smiling at your terminal like it just told you a really good joke.
+
+***** Productivity Overload: Be prepared to finish tasks so quickly that your coworkers will think you’ve discovered time travel.
+
+***** Imposter Syndrome: A sudden belief that you’re a coding guru, despite the fact that you still don’t know what grep does.
+
+***** Keyboard Shortcut Obsession: You might start using shortcuts for everything, expect your friends to look at you like you’re casting spells.
+
+***** Existential Crisis: You’ll find yourself questioning your life choices as you realize you have more config files than actual files.
+
+***** Terminal Tantrums: Sudden outbursts of laughter or frustration when the terminal does something unexpected, don’t worry, it happens to the best of us.
+
+***** Unsolicited Tech Support: Friends and family may suddenly believe you’re a tech wizard and seek your help for their computer problems, whether you’re qualified or not.
+
+***** Random Keyboard Dancing: You might find yourself doing a little happy dance each time you nail a command on the first try.
+
+***** Binge-Configuring: Prepare for late nights filled with endless tweaking, as you discover new ways to make your terminal even cooler—it’s a slippery slope!
+
+***** Philosophical Debates: You may start questioning the meaning of life every time you encounter a bug—like, why does this =ls= command keep messing with me?
+
+* SO, 
+
+******* Use at your own risk, and remember: with great power comes great responsibility (and an abundance of memes). Enjoy the ride!
+
+******** also, read this , ↓ before you continue .. .. . ... 
+
+* A word of advice
+This org document is intended to be used by "a seasoned linux user" and not "the average joe". If you are going to use this file, you are expected to have a functional dotfiles setup, or have "prior experience" with things like "ricing". If you don't, please leave. .. . otherwise, you'll burn out or have a really, really hard time. 
+
+**************** If you're still willing to push through, then, continue. .. ... 
+
+
+* Hello! Welcome to my dots!
+This file contains all the information that one would need about my dotfiles. 
+
+** Affected Programs: 
+*** Status 
+
+=(D) => DONE= =(NS) => NEEDS INITIAL SETUP BY USER= =(USC / NC) => USES STOCK CONFIG / (OR) / NOT CONFIGURED YET ALTHOUGH I HAVE WORKING PROTOTYPES=
+
+
+My dotfiles will modify the configuration of the following programs. 
+1. Hyprland (D)
+2. Waybar (D)
+3. Kitty (D)
+4. Matugen (D)
+5. Hyprlock (USC / NC)
+7. Fish (D)
+8. Rofi (D)
+9. Emacs (USC / NC)
+10. Waypaper (D) (NS)
+11. GTK (D) (NS)
+12. QT (D) (NS)
+14. Starship (D)
+
+*** Extras (Optional configurations that I include for the following programs)
+The below currently use stock configurations although I have prototype configurations that I'm currently working on. 
+1. Pacman
+2. GRUB 
+3. SDDM 
+4. Neovim 
+
+******** NOTE: An install script will be created soon which will do required operations for "=EXTRAS=" as well ...
+
+
+* A SERIOUS NOTE 
+
+******** SOME OF THE ABOVE MENTIONED PROGRAMS ARE CRITICAL. (GRUB, SDDM etc .)
+******** YOU ARE ADVISED TO HAVE A BACKUP.
+******** THESE DOTFILES ARE PROVIDED WITH ABSOLUTELY NO WARRANTY.
+******** USE AT YOUR OWN RISK. ... 
+******** DON'T COME BACK WITH SUPPORT QUESTIONS LATER,  ...
+******** I'M NOT RESPONSIBLE, FOR YOUR MISTAKE . .. ... .. .
+******** YOU HAVE BEEN WARNED . .. ... .. . 
+
+*** NOTE: These dotfiles are my view of what "my desktop environment" or "my operating system" should look and feel like. 
+
+************************* Without any further ado,
+************************* Let's Begin!
+
+* Matugen Config =STARTS= here
+
+Matugen is the program that grabs colors from the wallpaper, changes it to be in line with the material design colors, and gives the respective files for other apps to use that color scheme. It's a beautiful gamechanger! 
+
+Matugen is configured via a =config.toml= file. Which sources from templates listed in the =~/.config/matugen/templates/= directory.
+
+For better understanding, I've started with templates first, as the =config.toml= sources from them anyway. 
+
+** Templates
+
+*** Colors.css
+This is mainly used for waybar colors and some other stuff. 
+#+begin_src css :tangle ~/.config/matugen/templates/colors.css
+<* for name, value in colors *>
+    @define-color {{name}} {{value.default.hex}};
+<* endfor *>
+#+end_src
+
+*** GTK-Colors.css
+This is mainly used for GTK colors.
+#+begin_src css :tangle ~/.config/matugen/templates/gtk-colors.css
+@define-color accent_color {{colors.primary_fixed_dim.default.hex}};
+@define-color accent_fg_color {{colors.on_primary_fixed.default.hex}};
+@define-color accent_bg_color {{colors.primary_fixed_dim.default.hex}};
+@define-color window_bg_color {{colors.surface_dim.default.hex}};
+@define-color window_fg_color {{colors.on_surface.default.hex}};
+@define-color headerbar_bg_color {{colors.surface_dim.default.hex}};
+@define-color headerbar_fg_color {{colors.on_surface.default.hex}};
+@define-color popover_bg_color {{colors.surface_dim.default.hex}};
+@define-color popover_fg_color {{colors.on_surface.default.hex}};
+@define-color view_bg_color {{colors.surface.default.hex}};
+@define-color view_fg_color {{colors.on_surface.default.hex}};
+@define-color card_bg_color {{colors.surface.default.hex}};
+@define-color card_fg_color {{colors.on_surface.default.hex}};
+@define-color sidebar_bg_color @window_bg_color;
+@define-color sidebar_fg_color @window_fg_color;
+@define-color sidebar_border_color @window_bg_color;
+@define-color sidebar_backdrop_color @window_bg_color;
+#+end_src
+
+*** Hyprland-colors.conf
+This is mainly used for Hyprland to get colors from.
+#+begin_src conf :tangle ~/.config/matugen/templates/hyprland-colors.conf
+<* for name, value in colors *>
+$image = {{image}}
+${{name}} = rgba({{value.default.hex_stripped}}ff)
+<* endfor *>
+#+end_src
+
+*** Kitty-colors.conf
+This is mainly used for kitty.
+#+begin_src conf :tangle ~/.config/matugen/templates/kitty-colors.conf
+cursor {{colors.on_surface.default.hex}}
+cursor_text_color {{colors.on_surface_variant.default.hex}}
+
+foreground            {{colors.on_surface.default.hex}}
+background            {{colors.surface.default.hex}}
+selection_foreground  {{colors.on_secondary.default.hex}}
+selection_background  {{colors.secondary_fixed_dim.default.hex}}
+url_color             {{colors.primary.default.hex}}
+
+# black
+color8   #262626
+color0   #4c4c4c
+
+# red
+color1   #ac8a8c
+color9   #c49ea0
+
+# green
+color2   #8aac8b
+color10  #9ec49f
+
+# yellow
+color3   #aca98a
+color11  #c4c19e
+
+# blue
+/* color4  #8f8aac */
+color4  {{colors.primary.default.hex}}
+color12 #a39ec4
+
+# magenta
+color5   #ac8aac
+color13  #c49ec4
+
+# cyan
+color6   #8aacab
+color14  #9ec3c4
+
+# white
+color15   #e7e7e7
+color7  #f0f0f0
+
+post_hook = "kitty @ set-colors -a -c ~/.config/kitty/colors.conf"
+#+end_src
+
+*** Pywalfox-colors.json
+This is mainly used to sync colors with the pywalfox native connector for the pywalfox firefox extension. So that your firefox or firefox-based browser matches with the colors from your wallpaper.
+#+begin_src json :tangle ~/.config/matugen/templates/pywalfox-colors.json
+{
+  "wallpaper": "{{image}}",
+  "alpha": "100",
+  "colors": {
+    "color0": "{{colors.background.default.hex}}",
+    "color1": "",
+    "color2": "",
+    "color3": "",
+    "color4": "",
+    "color5": "",
+    "color6": "",
+    "color7": "",
+    "color8": "",
+    "color9": "",
+    "color10": "{{colors.primary.default.hex}}",
+    "color11": "",
+    "color12": "",
+    "color13": "{{colors.surface_bright.default.hex}}",
+    "color14": "",
+    "color15": "{{colors.on_surface.default.hex}}"
+  }
+}
+#+end_src
+
+*** Qtct-colors.conf
+This is mainly used to configure the theming for qt applications. Both qt5 and qt6
+#+begin_src conf :tangle ~/.config/matugen/templates/qtct-colors.conf
+[ColorScheme]
+active_colors={{colors.on_background.default.hex}}, {{colors.surface.default.hex}}, #ffffff, #cacaca, #9f9f9f, #b8b8b8, {{colors.on_background.default.hex}}, #ffffff, {{colors.on_surface.default.hex}}, {{colors.background.default.hex}}, {{colors.background.default.hex}}, {{colors.shadow.default.hex}}, {{colors.primary_container.default.hex}}, {{colors.on_primary_container.default.hex}}, {{colors.secondary.default.hex}}, {{colors.primary.default.hex}}, {{colors.surface.default.hex}}, {{colors.scrim.default.hex}}, {{colors.surface.default.hex}}, {{colors.on_surface.default.hex}}, {{colors.secondary.default.hex}}
+disabled_colors={{colors.on_background.default.hex}}, {{colors.surface.default.hex}}, #ffffff, #cacaca, #9f9f9f, #b8b8b8, {{colors.on_background.default.hex}}, #ffffff, {{colors.on_surface.default.hex}}, {{colors.background.default.hex}}, {{colors.background.default.hex}}, {{colors.shadow.default.hex}}, {{colors.primary_container.default.hex}}, {{colors.on_primary_container.default.hex}}, {{colors.secondary.default.hex}}, {{colors.primary.default.hex}}, {{colors.surface.default.hex}}, {{colors.scrim.default.hex}}, {{colors.surface.default.hex}}, {{colors.on_surface.default.hex}}, {{colors.secondary.default.hex}}
+inactive_colors={{colors.on_background.default.hex}}, {{colors.surface.default.hex}}, #ffffff, #cacaca, #9f9f9f, #b8b8b8, {{colors.on_background.default.hex}}, #ffffff, {{colors.on_surface.default.hex}}, {{colors.background.default.hex}}, {{colors.background.default.hex}}, {{colors.shadow.default.hex}}, {{colors.primary_container.default.hex}}, {{colors.on_primary_container.default.hex}}, {{colors.secondary.default.hex}}, {{colors.primary.default.hex}}, {{colors.surface.default.hex}}, {{colors.scrim.default.hex}}, {{colors.surface.default.hex}}, {{colors.on_surface.default.hex}}, {{colors.secondary.default.hex}}
+#+end_src
+
+*** Rofi-colors.rasi
+This is for rofi menus.
+#+begin_src rasi :tangle ~/.config/matugen/templates/rofi-colors.rasi
+ * {
+    primary: {{colors.primary.default.hex}};
+    primary-fixed: {{colors.primary_fixed.default.hex}};
+    primary-fixed-dim: {{colors.primary_fixed_dim.default.hex}};
+    on-primary: {{colors.on_primary.default.hex}};
+    on-primary-fixed: {{colors.on_primary_fixed.default.hex}};
+    on-primary-fixed-variant: {{colors.on_primary_fixed_variant.default.hex}};
+    primary-container: {{colors.primary_container.default.hex}};
+    on-primary-container: {{colors.on_primary_container.default.hex}};
+    secondary: {{colors.secondary.default.hex}};
+    secondary-fixed: {{colors.secondary_fixed.default.hex}};
+    secondary-fixed-dim: {{colors.secondary_fixed_dim.default.hex}};
+    on-secondary: {{colors.on_secondary.default.hex}};
+    on-secondary-fixed: {{colors.on_secondary_fixed.default.hex}};
+    on-secondary-fixed-variant: {{colors.on_secondary_fixed_variant.default.hex}};
+    secondary-container: {{colors.secondary_container.default.hex}};
+    on-secondary-container: {{colors.on_secondary_container.default.hex}};
+    tertiary: {{colors.tertiary.default.hex}};
+    tertiary-fixed: {{colors.tertiary_fixed.default.hex}};
+    tertiary-fixed-dim: {{colors.tertiary_fixed_dim.default.hex}};
+    on-tertiary: {{colors.on_tertiary.default.hex}};
+    on-tertiary-fixed: {{colors.on_tertiary_fixed.default.hex}};
+    on-tertiary-fixed-variant: {{colors.on_tertiary_fixed_variant.default.hex}};
+    tertiary-container: {{colors.tertiary_container.default.hex}};
+    on-tertiary-container: {{colors.on_tertiary_container.default.hex}};
+    error: {{colors.error.default.hex}};
+    on-error: {{colors.on_error.default.hex}};
+    error-container: {{colors.error_container.default.hex}};
+    on-error-container: {{colors.on_error_container.default.hex}};
+    surface: {{colors.surface.default.hex}};
+    on-surface: {{colors.on_surface.default.hex}};
+    on-surface-variant: {{colors.on_surface_variant.default.hex}};
+    outline: {{colors.outline.default.hex}};
+    outline-variant: {{colors.outline_variant.default.hex}};
+    shadow: {{colors.shadow.default.hex}};
+    scrim: {{colors.scrim.default.hex}};
+    inverse-surface: {{colors.inverse_surface.default.hex}};
+    inverse-on-surface: {{colors.inverse_on_surface.default.hex}};
+    inverse-primary: {{colors.inverse_primary.default.hex}};
+    surface-dim: {{colors.surface_dim.default.hex}};
+    surface-bright: {{colors.surface_bright.default.hex}};
+    surface-container-lowest: {{colors.surface_container_lowest.default.hex}};
+    surface-container-low: {{colors.surface_container_low.default.hex}};
+    surface-container: {{colors.surface_container.default.hex}};
+    surface-container-high: {{colors.surface_container_high.default.hex}};
+    surface-container-highest: {{colors.surface_container_highest.default.hex}};
+}
+#+end_src
+
+*** Starship-colors.toml
+This is for the configuration of starship for colors. This is the all-in-one config that matugen provides. And I quite like it, so I don't have a specific starship configuration. I just use the one provided by matugen. 
+#+begin_src toml :tangle ~/.config/matugen/templates/starship-colors.toml
+format = '''
+$directory$git_branch$rust$python
+$character'''
+
+palette = 'colors'
+
+[palettes.colors]
+mustard = '#af8700' # example
+color1 = '{{colors.primary_fixed_dim.default.hex}}'
+color2 = '{{colors.on_primary.default.hex}}'
+color3 = '{{colors.on_surface_variant.default.hex}}'
+color4 = '{{colors.surface_container.default.hex}}'
+color5 = '{{colors.on_primary.default.hex}}'
+color6 = '{{colors.surface_dim.default.hex}}'
+color7 = '{{colors.surface.default.hex}}'
+color8 = '{{colors.primary.default.hex}}'
+color9 = '{{colors.tertiary.default.hex}}'
+
+# Prompt symbols 
+[character]
+success_symbol = "[🞈](color9 bold)"
+error_symbol = "[🞈](@{error})"
+vicmd_symbol = "[🞈](#f9e2af)"
+
+[directory]
+format = "[](fg:color1 bg:color4)[󰉋](bg:color1 fg:color2)[ ](fg:color1 bg:color4)[$path ](fg:color3 bg:color4)[ ](fg:color4)"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $branch](fg:color3 bg:color4)[](fg:color4) "
+
+[time]
+format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $time](fg:color3 bg:color4)[](fg:color4) "
+disabled = false
+time_format = "%R" # Hour:Minute Format
+
+[python]
+format = "[](fg:color8 bg:color4)[${symbol}${version}](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5)( ${virtualenv})](fg:color3 bg:color4)[](fg:color4) "
+symbol = '🐍'
+# pyenv_version_name = true
+pyenv_prefix = 'venv'
+#+end_src
+
+**** Some apps like neovim are also configured to use matugen. But require additional setup. Such setups are declared at the =EXTRAS= section of this file. 
+
+
+** Config.toml for Matugen
+Of course, for matugen to manage all the templates listed above, it needs a config. My matugen config is over here. 
+
+#+begin_src toml :tangle ~/.config/matugen/config.toml
+[config]
+reload_apps = true
+
+
+[templates.hyprland]
+input_path = "~/.config/matugen/templates/hyprland-colors.conf"
+output_path = "~/.config/hypr/colors.conf"
+post_hook = "hyprctl reload"
+
+
+[templates.hyprlock]
+input_path = "~/.config/matugen/templates/hyprland-colors.conf"
+output_path = "~/.config/hypr/colors.conf"
+
+[templates.waybar]
+input_path = '~/.config/matugen/templates/colors.css'
+output_path = '~/.config/waybar/colors.css'
+post_hook = 'killall waybar'
+
+[templates.emacs]
+input_path = "~/.config/matugen/templates/colors.css"
+output_path = "~/.config/emacs/colors.css"
+
+[templates.kitty]
+input_path = "~/.config/matugen/templates/kitty-colors.conf"
+output_path = "~/.config/kitty/colors.conf"
+
+[templates.starship]
+input_path = "~/.config/matugen/templates/starship-colors.toml"
+output_path = "~/.config/starship.toml"
+
+[templates.pywalfox]
+input_path = "~/.config/matugen/templates/pywalfox-colors.json"
+output_path = "~/.cache/wal/colors.json"
+post_hook = "pywalfox update"
+
+[templates.rofi]
+input_path = "~/.config/matugen/templates/rofi-colors.rasi"
+output_path = "~/.config/rofi/themes/colors.rasi"
+
+[templates.nvim]
+input_path = '~/.config/nvim/pywal/matugen.lua'
+output_path = '~/.cache/wal/base46-dark.lua' 
+
+[templates.gtk3]
+input_path = "~/.config/matugen/templates/gtk-colors.css"
+output_path = "~/.config/gtk-3.0/colors.css"
+
+[templates.gtk4]
+input_path = "~/.config/matugen/templates/gtk-colors.css"
+output_path = "~/.config/gtk-4.0/colors.css"
+
+[templates.qt5ct]
+input_path = "~/.config/matugen/templates/qtct-colors.conf"
+output_path = "~/.config/qt5ct/colors/matugen.conf"
+
+[templates.qt6ct]
+input_path = "~/.config/matugen/templates/qtct-colors.conf"
+output_path = "~/.config/qt6ct/colors/matugen.conf"
+#+end_src
+
+
+* Matugen Config =ENDS= here
+
+
+
+
+
+
+* Hyprland Config =STARTS= Here
+Hyprland is a tiling compositor that doesn't sacrifice on its looks. Blur, Animations, Scratchpads, Shortcuts, ... you name it, Hyprland's got it!
+
+*** NOTE: Most of the things that I've configured for Hyprland are actually standard values present in the default config. 
+
+***** List of things that I've changed : 
+1. Keyboard Shortcuts
+2. Removed stuff that I won't need.
+3. Matugen Colors
+4. Sources
+
+*** Wiki Links: Links are present in the appropriate topics and present in source code blocks. This is to provide help in topics that someone might find required. 
+
+** Sources:
+I source my =colors.conf= right at the start for matugen colors. Otherwise, Hyprland will not be able to parse the colors and throw globbing errors.
+I dump everything in =hyprland.conf= in order to keep the number of files at a minimum and also, it would make Hyprland to immediately take the changes into effect when stuff is put in the main Hyprland config file, instead of sourcing. 
+#+begin_src conf :tangle ~/.config/hypr/hyprland.conf
+source = ~/.config/hypr/colors.conf
+#+end_src
+
+** Monitors
+Hyprland will come up on your screen based on your monitor config over here. I've set mine to be automatic as I'm currently not interested in multiple monitors. You can configure Hyprland to show up on your preferred monitors using the Hyprland wiki.
+
+Information for configuring monitors on Hyprland is available at https://wiki.hyprland.org/Configuring/Monitors/
+
+#+begin_src conf :tangle ~/.config/hypr/hyprland.conf
+monitor=,preferred,auto,auto
+#+end_src
+
+** Variables (My Programs)
+Programs to be considered as default by Hyprland. Please be aware that setting your defaults like below will only change it for Hyprland, and not "system-considered" default programs like kde's system configuration, which will hold values that are probably different than the ones listed here.
+Wiki link for this topic : https://wiki.hyprland.org/Configuring/Keywords/ 
+#+begin_src conf :tangle ~/.config/hypr/hyprland.conf
+$terminal = kitty
+$fileManager = nautilus
+$browser = zen-browser
+$menu = rofi -show drun
+#+end_src
+
+** Autostart
+Hyprland allows you to autostart programs at login. Nescessary programs like status bars, notification daemons, authentication agents etc. Can be configured to start at login over here. 
+#+begin_src conf :tangle ~/.config/hypr/hyprland.conf
+exec-once = /usr/bin/emacs --daemon # quickstart service for my ide
+exec-once = ~/wallpapers/wallpaperchange.sh
+exec-once = sleep 10 && ~/wallpapers/wallpaperchange2.sh && sleep 2 && ~/wallpapers/wallpaperchange2.sh && python ~/HyDE/Configs/.local/lib/hyde/waybar.py --watch # reinforce colors + bar watcher
+exec-once = systemctl --user start hyprpolkitagent # authentication agent for giving elevated privilages to applications that require it
+exec-once = NetworkManager # start NetworkManager
+exec-once = nm-applet # NetworkManager applet to connect to the internet
+#+end_src
+
+** Environment Variables
+
+Setting some stuff up for a better experience with programs that you use. 
+
+Wiki Link for this topic : https://wiki.hyprland.org/Configuring/Environment-variables/
+
+#+begin_src conf :tangle ~/.config/hypr/hyprland.conf
+env = XCURSOR_SIZE,24
+env = HYPRCURSOR_SIZE,24
+env = XDG_SESSION_TYPE,wayland
+# Qt Environment Variables
+env = QT_QPA_PLATFORM,wayland
+env = QT_QPA_PLATFORMTHEME,qt5ct
+env = XDG_CURRENT_DESKTOP,Hyprland
+env = QT_QPA_PLATFORM_PLUGIN_PATH,/usr/lib/qt/plugins
+#+end_src 
+
+
+** Look and Feel
+
+Wiki Link for this topic : https://wiki.hyprland.org/Configuring/
+                           =+=
+Additional wiki links in the respective source code blocks =↓= 
+
+Look and Feel has 4 sections, namely:
+
+ 1. =General=
+ 2. =Decoration=
+ 3. =Animations=
+ 4. =Layouts=
+
+These parts are put in a file called =lookandfeel.conf=
+
+Let's break down each one: 
+
+*** General:
+This is stuff that handles some of the values like =GAPS=, =BORDERS=, =LAYOUT=, =TEARING= etc.
+
+#+begin_src conf :tangle ~/.config/hypr/hyprland.conf
+
+windowrulev2 = opacity 0.75 override 0.75 override, class:.*
+
+general {
+    gaps_in = 5
+    gaps_out = 10
+
+    border_size = 2
+
+    # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
+    col.active_border = $primary $secondary $tertiary $primary_fixed $secondary_fixed $tertiary_fixed $primary_fixed_dim $secondary_fixed_dim $tertiary_fixed_dim $primary_container
+    col.inactive_border = 0x282a3680 0x44475a80 0x6272a480
+
+    no_border_on_floating = false
+
+    # Set to true enable resizing windows by clicking and dragging on borders and gaps
+    resize_on_border = false
+
+    # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
+    allow_tearing = false
+
+    layout = dwindle
+}
+#+end_src
+
+*** Decorations:
+This is the stuff that handles =ROUNDING=, =OPACITY=, =SHADOW=, =BLUR= etc.
+#+begin_src conf :tangle ~/.config/hypr/hyprland.conf
+decoration {
+    rounding = 10
+    rounding_power = 2
+
+    # Change transparency of focused and unfocused windows
+    active_opacity = 1.0
+    inactive_opacity = 1.0
+
+    shadow {
+        enabled = true
+        range = 4
+        render_power = 3
+        color = rgba(1a1a1aee)
+    }
+
+    # https://wiki.hyprland.org/Configuring/Variables/#blur
+    blur {
+        enabled = true
+        size = 5
+        passes = 3
+
+        vibrancy = 0.1696
+    }
+}
+#+end_src
+
+*** Animations:
+Woo! Animations!
+
+A LOT of animations are configured in the animations directory which should suit most users' tastes. This should be pretty much the ultimate animation pack for Hyprland. Even if you aren't satisfied with this, you can copy-paste a few lines from the other animation files present here and get your desired result. The animations directory is mostly a collection of animations used in a whole lot of preconfigured setups. Animations from popular dotfiles like ML4W (mylinuxforwork by Stephan Raabe), HyDE (Prasanthrangan and kRHYME7) end4 and many more are present here in this config, ready for you to use and enjoy. 
+
+**** List of Animations 
+1. Classic
+2. diablo-1
+3. diablo-2
+4. Disable (*disables animations*)
+5. dynamic.conf
+6. end4
+7. fast
+8. high
+9. ja
+10. me-1
+11. me-2
+12. minimal-1
+13. minimal-2
+14. moving
+15. optimized
+16. standard
+17. theme
+18. vertical
+19. myanim.conf (my custom animation which I use)
+
+***** classic.conf
+The original Hyprland animations
+#+begin_src conf :tangle ~/.config/hypr/animations/classic.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Classic"
+# credit https://github.com/mylinuxforwork/dotfiles
+# ----------------------------------------------------- 
+
+animations {
+    enabled = true
+    bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+    animation = windows, 1, 7, myBezier
+    animation = windowsOut, 1, 7, default, popin 80%
+    animation = border, 1, 10, default
+    animation = borderangle, 1, 8, default
+    animation = fade, 1, 7, default
+    animation = workspaces, 1, 6, default
+}
+
+#+end_src
+
+***** diablo-1.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/diablo-1.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Diablo-1"
+# credit https://github.com/Itz-Abhishek-Tiwari
+# ----------------------------------------------------- 
+
+animations {
+    enabled = 1
+    bezier = default, 0.05, 0.9, 0.1, 1.05
+    bezier = wind, 0.05, 0.9, 0.1, 1.05
+    bezier = overshot, 0.13, 0.99, 0.29, 1.08
+    bezier = liner, 1, 1, 1, 1
+    bezier = bounce, 0.4, 0.9, 0.6, 1.0
+    bezier = snappyReturn, 0.4, 0.9, 0.6, 1.0
+
+    bezier = slideInFromRight, 0.5, 0.0, 0.5, 1.0
+    animation = windows, 1, 5,  snappyReturn, slidevert
+    animation = windowsIn, 1, 5, snappyReturn, slidevert right 
+  
+    animation = windowsOut, 1, 5, snappyReturn, slide 
+    animation = windowsMove, 1, 6, bounce, slide
+    animation = layersOut, 1, 5, bounce, slidevert right
+    animation = fadeIn, 1, 10, default
+    animation = fadeOut, 1, 10, default
+    animation = fadeSwitch, 1, 10, default
+    animation = fadeShadow, 1, 10, default
+    animation = fadeDim, 1, 10, default
+    animation = fadeLayers, 1, 10, default
+    animation = workspaces, 1, 7, overshot, slidevert
+    animation = border, 1, 1, liner
+    animation = layers, 1, 4, bounce, slidevert right
+    animation = borderangle, 1, 30, liner, loop
+} 
+
+#+end_src
+ 
+***** diablo-2.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/diablo-2.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Diablo-2"
+# credit https://github.com/Itz-Abhishek-Tiwari
+# ----------------------------------------------------- 
+
+animations {
+    enabled = 1
+    bezier = default, 0.05, 0.9, 0.1, 1.05
+    bezier = wind, 0.05, 0.9, 0.1, 1.05
+    bezier = overshot, 0.13, 0.99, 0.29, 1.08
+    bezier = liner, 1, 1, 1, 1
+    animation = windows, 1, 7, wind, popin
+    animation = windowsIn, 1, 7, overshot, popin
+    animation = windowsOut, 1, 5, overshot, popin
+    animation = windowsMove, 1, 6, overshot, slide
+    animation = layers, 1, 5, default, popin
+    animation = fadeIn, 1, 10, default
+    animation = fadeOut, 1, 10, default
+    animation = fadeSwitch, 1, 10, default
+    animation = fadeShadow, 1, 10, default
+    animation = fadeDim, 1, 10, default
+    animation = fadeLayers, 1, 10, default
+    animation = workspaces, 1, 7, overshot, slidevert
+    animation = border, 1, 1, liner
+    animation = borderangle, 1, 30, liner, loop
+}
+#+end_src
+
+***** disable.conf
+Disables all animations 
+#+begin_src conf :tangle ~/.config/hypr/animations/disable.conf
+
+# // ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# // █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+
+# See https://wiki.hyprland.org/Configuring/Animations/
+# credits: https://github.com/prasanthrangan/hyprdots
+
+animations:enabled=false
+
+
+#+end_src
+
+***** dynamic.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/dynamic.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Dynamic"
+# credit https://github.com/mylinuxforwork/dotfiles
+# ----------------------------------------------------- 
+
+animations {
+    enabled = true
+    bezier = wind, 0.05, 0.9, 0.1, 1.05
+    bezier = winIn, 0.1, 1.1, 0.1, 1.1
+    bezier = winOut, 0.3, -0.3, 0, 1
+    bezier = liner, 1, 1, 1, 1
+    animation = windows, 1, 6, wind, slide
+    animation = windowsIn, 1, 6, winIn, slide
+    animation = windowsOut, 1, 5, winOut, slide
+    animation = windowsMove, 1, 5, wind, slide
+    animation = border, 1, 1, liner
+    animation = borderangle, 1, 30, liner, loop
+    animation = fade, 1, 10, default
+    animation = workspaces, 1, 5, wind
+}
+#+end_src
+
+***** end4.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/end4.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "End4"
+# credit https://github.com/end-4/dots-hyprland
+# ----------------------------------------------------- 
+
+animations {
+    enabled = true
+    # Animation curves
+    
+    bezier = linear, 0, 0, 1, 1
+    bezier = md3_standard, 0.2, 0, 0, 1
+    bezier = md3_decel, 0.05, 0.7, 0.1, 1
+    bezier = md3_accel, 0.3, 0, 0.8, 0.15
+    bezier = overshot, 0.05, 0.9, 0.1, 1.1
+    bezier = crazyshot, 0.1, 1.5, 0.76, 0.92 
+    bezier = hyprnostretch, 0.05, 0.9, 0.1, 1.0
+    bezier = menu_decel, 0.1, 1, 0, 1
+    bezier = menu_accel, 0.38, 0.04, 1, 0.07
+    bezier = easeInOutCirc, 0.85, 0, 0.15, 1
+    bezier = easeOutCirc, 0, 0.55, 0.45, 1
+    bezier = easeOutExpo, 0.16, 1, 0.3, 1
+    bezier = softAcDecel, 0.26, 0.26, 0.15, 1
+    bezier = md2, 0.4, 0, 0.2, 1 # use with .2s duration
+    # Animation configs
+    animation = windows, 1, 3, md3_decel, popin 60%
+    animation = windowsIn, 1, 3, md3_decel, popin 60%
+    animation = windowsOut, 1, 3, md3_accel, popin 60%
+    animation = border, 1, 10, default
+    animation = fade, 1, 3, md3_decel
+    # animation = layers, 1, 2, md3_decel, slide
+    animation = layersIn, 1, 3, menu_decel, slide
+    animation = layersOut, 1, 1.6, menu_accel
+    animation = fadeLayersIn, 1, 2, menu_decel
+    animation = fadeLayersOut, 1, 4.5, menu_accel
+    animation = workspaces, 1, 7, menu_decel, slide
+    # animation = workspaces, 1, 2.5, softAcDecel, slide
+    # animation = workspaces, 1, 7, menu_decel, slidefade 15%
+    # animation = specialWorkspace, 1, 3, md3_decel, slidefadevert 15%
+    animation = specialWorkspace, 1, 3, md3_decel, slidevert
+}
+#+end_src
+
+***** fast.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/fast.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Fast"
+# credit https://github.com/mylinuxforwork/dotfiles
+# ----------------------------------------------------- 
+animations {
+    enabled = true
+    bezier = linear, 0, 0, 1, 1
+    bezier = md3_standard, 0.2, 0, 0, 1
+    bezier = md3_decel, 0.05, 0.7, 0.1, 1
+    bezier = md3_accel, 0.3, 0, 0.8, 0.15
+    bezier = overshot, 0.05, 0.9, 0.1, 1.1
+    bezier = crazyshot, 0.1, 1.5, 0.76, 0.92 
+    bezier = hyprnostretch, 0.05, 0.9, 0.1, 1.0
+    bezier = fluent_decel, 0.1, 1, 0, 1
+    bezier = easeInOutCirc, 0.85, 0, 0.15, 1
+    bezier = easeOutCirc, 0, 0.55, 0.45, 1
+    bezier = easeOutExpo, 0.16, 1, 0.3, 1
+    animation = windows, 1, 3, md3_decel, popin 60%
+    animation = border, 1, 10, default
+    animation = fade, 1, 2.5, md3_decel
+    animation = workspaces, 1, 3.5, easeOutExpo, slide
+    animation = specialWorkspace, 1, 3, md3_decel, slidevert
+}
+
+#+end_src
+
+***** high.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/high.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "High"
+# credit https://github.com/mylinuxforwork/dotfiles
+# ----------------------------------------------------- 
+
+animations {
+    enabled = true
+    bezier = wind, 0.05, 0.9, 0.1, 1.05
+    bezier = winIn, 0.1, 1.1, 0.1, 1.1
+    bezier = winOut, 0.3, -0.3, 0, 1
+    bezier = liner, 1, 1, 1, 1
+    animation = windows, 1, 6, wind, slide
+    animation = windowsIn, 1, 6, winIn, slide
+    animation = windowsOut, 1, 5, winOut, slide
+    animation = windowsMove, 1, 5, wind, slide
+    animation = border, 1, 1, liner
+    animation = borderangle, 1, 30, liner, loop
+    animation = fade, 1, 10, default
+    animation = workspaces, 1, 5, wind
+}
+
+#+end_src
+
+***** ja.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/ja.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Ja"
+# credit https://github.com/JaKooLit/Hyprland-Dots
+# ----------------------------------------------------- 
+
+animations {
+  enabled = yes
+
+  bezier = wind, 0.05, 0.9, 0.1, 1.05
+  bezier = winIn, 0.1, 1.1, 0.1, 1.1
+  bezier = winOut, 0.3, -0.3, 0, 1
+  bezier = liner, 1, 1, 1, 1
+  bezier = overshot, 0.05, 0.9, 0.1, 1.05
+  bezier = smoothOut, 0.5, 0, 0.99, 0.99
+  bezier = smoothIn, 0.5, -0.5, 0.68, 1.5
+  
+  animation = windows, 1, 6, wind, slide
+  animation = windowsIn, 1, 5, winIn, slide
+  animation = windowsOut, 1, 3, smoothOut, slide
+  animation = windowsMove, 1, 5, wind, slide
+  animation = border, 1, 1, liner
+  #animation = borderangle, 1, 180, liner, loop #used by rainbow borders and rotating colors
+  animation = fade, 1, 3, smoothOut
+  animation = workspaces, 1, 5, overshot
+  
+  # animations for -git or version >0.42.0
+  animation = workspacesIn, 1, 5, winIn, slide
+  animation = workspacesOut, 1, 5, winOut, slide
+}
+
+#+end_src
+
+***** me-1.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/me-1.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Me-1"
+# credit https://github.com/mahaveergurjar
+# ----------------------------------------------------- 
+
+animations {
+    enabled = true
+    # Animation curves
+    bezier = wind, 0.05, 0.9, 0.1, 1.05
+    bezier = winIn, 0.1, 1.1, 0.1, 1.1
+    bezier = winOut, 0.3, -0.3, 0, 1
+    bezier = liner, 1, 1, 1, 1
+    # bezier = linear, 0, 0, 1, 1
+    bezier = md3_standard, 0.2, 0, 0, 1
+    bezier = md3_decel, 0.05, 0.7, 0.1, 1
+    bezier = md3_accel, 0.3, 0, 0.8, 0.15
+    bezier = overshot, 0.05, 0.9, 0.1, 1.1
+    bezier = crazyshot, 0.1, 1.5, 0.76, 0.92 
+    bezier = hyprnostretch, 0.05, 0.9, 0.1, 1.0
+    bezier = menu_decel, 0.1, 1, 0, 1
+    bezier = menu_accel, 0.38, 0.04, 1, 0.07
+    bezier = easeInOutCirc, 0.85, 0, 0.15, 1
+    bezier = easeOutCirc, 0, 0.55, 0.45, 1
+    bezier = easeOutExpo, 0.16, 1, 0.3, 1
+    bezier = softAcDecel, 0.26, 0.26, 0.15, 1
+    bezier = md2, 0.4, 0, 0.2, 1 # use with .2s duration
+    
+    # Animation configs
+    # animation = windows, 1, 3, md3_decel, popin 60%
+    # animation = windowsIn, 1, 3, md3_decel, popin 60%
+    # animation = windowsOut, 1, 3, md3_accel, popin 60%
+    # animation = windows, 1, 6, wind, slide
+    animation = border, 1, 1, liner
+    animation = borderangle, 1, 30, liner, loop
+    animation = windows, 1, 6, wind, slide
+    animation = windowsIn, 1, 6, winIn, slide
+    animation = windowsOut, 1, 5, winOut, slide
+    animation = windowsMove, 1, 5, wind, slide
+
+    # animation = border, 1, 10, default
+    animation = fade, 1, 3, md3_decel
+    # animation = layers, 1, 2, md3_decel, slide
+    animation = layersIn, 1, 3, menu_decel, slide
+    animation = layersOut, 1, 1.6, menu_accel
+    animation = fadeLayersIn, 1, 2, menu_decel
+    animation = fadeLayersOut, 1, 4.5, menu_accel
+    animation = workspaces, 1, 7, menu_decel, slide
+    animation = workspaces, 1, 5, wind
+    # animation = workspaces, 1, 2.5, softAcDecel, slide
+    # animation = workspaces, 1, 7, menu_decel, slidefade 15%
+    animation = specialWorkspace, 1, 3, md3_decel, slidefadevert 15%
+    animation = specialWorkspace, 1, 3, md3_decel, slidevert
+}
+#+end_src
+
+***** me-2.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/me-2.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Me-2"
+# credit https://github.com/mahaveergurjar
+# ----------------------------------------------------- 
+
+animations {
+    enabled = true
+    # Animation curves
+    bezier = wind, 0.05, 0.9, 0.1, 1.05
+    bezier = winIn, 0.1, 1.1, 0.1, 1.1
+    bezier = winOut, 0.3, -0.3, 0, 1
+    bezier = liner, 1, 1, 1, 1
+    bezier = md3_standard, 0.2, 0, 0, 1
+    bezier = md3_decel, 0.05, 0.7, 0.1, 1
+    bezier = md3_accel, 0.3, 0, 0.8, 0.15
+    bezier = overshot, 0.05, 0.9, 0.1, 1.1
+    bezier = crazyshot, 0.1, 1.5, 0.76, 0.92 
+    bezier = hyprnostretch, 0.05, 0.9, 0.1, 1.0
+    bezier = menu_decel, 0.1, 1, 0, 1
+    bezier = menu_accel, 0.38, 0.04, 1, 0.07
+    bezier = easeInOutCirc, 0.85, 0, 0.15, 1
+    bezier = easeOutCirc, 0, 0.55, 0.45, 1
+    bezier = easeOutExpo, 0.16, 1, 0.3, 1
+    bezier = softAcDecel, 0.26, 0.26, 0.15, 1
+    bezier = md2, 0.4, 0, 0.2, 1 # use with .2s duration
+
+    bezier = OutBack, 0.34, 1.56, 0.64, 1   
+    bezier = easeInOutCirc, 0.85, 0, 0.15, 1   
+
+    animation = border, 1, 1, liner
+    animation = borderangle, 1, 30, liner, loop
+    # animation = windows, 1, 6, wind, slide
+    animation = windowsIn, 1, 6, winIn, slide
+    # animation = windowsOut, 1, 5, winOut, slide
+    animation = windows, 1, 5, easeInOutCirc   
+    animation = windowsOut, 1, 5, OutBack  
+    animation = windowsMove, 1, 5, wind, slide
+    animation = fade, 1, 3, md3_decel
+    animation = layersIn, 1, 3, menu_decel, slide
+    animation = layersOut, 1, 1.6, menu_accel
+    animation = fadeLayersIn, 1, 2, menu_decel
+    animation = fadeLayersOut, 1, 4.5, menu_accel
+    animation = workspaces, 1, 7, menu_decel, slide
+    animation = workspaces, 1, 5, wind
+    animation = specialWorkspace, 1, 3, md3_decel, slidefadevert 15%
+    animation = specialWorkspace, 1, 3, md3_decel, slidevert
+}
+
+#+end_src
+
+***** minimal-1.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/minimal-1.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Minimal-1"
+# ----------------------------------------------------- 
+
+animations {
+  enabled = true
+
+  # █▄▄ █▀▀ ▀█ █ █▀▀ █▀█   █▀▀ █░█ █▀█ █░█ █▀▀
+  # █▄█ ██▄ █▄ █ ██▄ █▀▄   █▄▄ █▄█ █▀▄ ▀▄▀ ██▄
+  bezier = wind, 0.05, 0.9, 0.1, 1.05
+  bezier = winIn, 0.1, 1.1, 0.1, 1.1
+  bezier = winOut, 0.3, -0.3, 0, 1
+  bezier = liner, 1, 1, 1, 1
+
+  
+  #▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+  #█▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+  animation = windows, 1, 6, wind, slide
+  animation = windowsIn, 1, 6, winIn, slide
+  animation = windowsOut, 1, 5, winOut, slide
+  animation = windowsMove, 1, 5, wind, slide
+  animation = border, 1, 1, liner
+  animation = borderangle, 1, 30, liner, loop
+  animation = fade, 1, 10, default
+  animation = workspaces, 1, 5, wind
+}
+#+end_src
+
+***** minimal-2.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/minimal-2.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Minimal-2"
+# ----------------------------------------------------- 
+
+animations {
+    enabled = yes
+
+    bezier = quart, 0.25, 1, 0.5, 1
+
+    animation = windows, 1, 6, quart, slide
+    animation = border, 1, 6, quart
+    animation = borderangle, 1, 6, quart
+    animation = fade, 1, 6, quart
+    animation = workspaces, 1, 6, quart
+}
+
+#+end_src
+
+***** moving.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/moving.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Moving"
+# credit https://github.com/mylinuxforwork/dotfiles
+# ----------------------------------------------------- 
+
+animations {
+    enabled = true
+    bezier = overshot, 0.05, 0.9, 0.1, 1.05
+    bezier = smoothOut, 0.5, 0, 0.99, 0.99
+    bezier = smoothIn, 0.5, -0.5, 0.68, 1.5
+    animation = windows, 1, 5, overshot, slide
+    animation = windowsOut, 1, 3, smoothOut
+    animation = windowsIn, 1, 3, smoothOut
+    animation = windowsMove, 1, 4, smoothIn, slide
+    animation = border, 1, 5, default
+    animation = fade, 1, 5, smoothIn
+    animation = fadeDim, 1, 5, smoothIn
+    animation = workspaces, 1, 6, default
+}
+
+#+end_src
+
+***** optimized.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/optimized.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Optimized"
+# ----------------------------------------------------- 
+
+animations {
+    enabled = true
+    bezier = wind, 0.05, 0.85, 0.03, 0.97
+    bezier = winIn, 0.07, 0.88, 0.04, 0.99
+    bezier = winOut, 0.20, -0.15, 0, 1
+    bezier = liner, 1, 1, 1, 1
+    bezier = md3_standard, 0.12, 0, 0, 1
+    bezier = md3_decel, 0.05, 0.80, 0.10, 0.97
+    bezier = md3_accel, 0.20, 0, 0.80, 0.08
+    bezier = overshot, 0.05, 0.85, 0.07, 1.04
+    bezier = crazyshot, 0.1, 1.22, 0.68, 0.98
+    bezier = hyprnostretch, 0.05, 0.82, 0.03, 0.94
+    bezier = menu_decel, 0.05, 0.82, 0, 1
+    bezier = menu_accel, 0.20, 0, 0.82, 0.10
+    bezier = easeInOutCirc, 0.75, 0, 0.15, 1
+    bezier = easeOutCirc, 0, 0.48, 0.38, 1
+    bezier = easeOutExpo, 0.10, 0.94, 0.23, 0.98
+    bezier = softAcDecel, 0.20, 0.20, 0.15, 1
+    bezier = md2, 0.30, 0, 0.15, 1
+    
+    bezier = OutBack, 0.28, 1.40, 0.58, 1
+    bezier = easeInOutCirc, 0.78, 0, 0.15, 1
+
+    animation = border, 1, 1.6, liner
+    animation = borderangle, 1, 82, liner, loop
+    animation = windowsIn, 1, 3.2, winIn, slide
+    animation = windowsOut, 1, 2.8, easeOutCirc
+    animation = windowsMove, 1, 3.0, wind, slide
+    animation = fade, 1, 1.8, md3_decel
+    animation = layersIn, 1, 1.8, menu_decel, slide
+    animation = layersOut, 1, 1.5, menu_accel
+    animation = fadeLayersIn, 1, 1.6, menu_decel
+    animation = fadeLayersOut, 1, 1.8, menu_accel
+    animation = workspaces, 1, 4.0, menu_decel, slide
+    animation = specialWorkspace, 1, 2.3, md3_decel, slidefadevert 15%
+}
+#+end_src
+
+***** standard.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/standard.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Standard"
+# credit https://github.com/mylinuxforwork/dotfiles
+# ----------------------------------------------------- 
+
+animations {
+    enabled = true
+    bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+    animation = windows, 1, 7, myBezier
+    animation = windowsOut, 1, 7, default, popin 80%
+    animation = border, 1, 10, default
+    animation = borderangle, 1, 8, default
+    animation = fade, 1, 7, default
+    animation = workspaces, 1, 6, default
+}
+
+#+end_src
+
+***** theme.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/theme.conf
+# This file is generated by wallbash:animations.dcol
+
+# // ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# // █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+
+# See https://wiki.hyprland.org/Configuring/Animations/
+# credits: https://github.com/prasanthrangan/hyprdots
+
+animations {
+    enabled = yes
+    bezier = wind, 0.05, 0.9, 0.1, 1.05
+    bezier = winIn, 0.1, 1.1, 0.1, 1.1
+    bezier = winOut, 0.3, -0.3, 0, 1
+    bezier = liner, 1, 1, 1, 1
+    animation = windows, 1, 6, wind, slide
+    animation = windowsIn, 1, 6, winIn, slide
+    animation = windowsOut, 1, 5, winOut, slide
+    animation = windowsMove, 1, 5, wind, slide
+    animation = border, 1, 1, liner
+    animation = borderangle, 1, 30, liner, once
+    animation = fade, 1, 10, default
+    animation = workspaces, 1, 5, wind
+}
+#+end_src
+
+***** vertical.conf
+#+begin_src conf :tangle ~/.config/hypr/animations/vertical.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "Vertical"
+# ----------------------------------------------------- 
+
+animations {
+    bezier = fluent_decel, 0, 0.2, 0.4, 1
+    bezier = easeOutCirc, 0, 0.55, 0.45, 1
+    bezier = easeOutCubic, 0.33, 1, 0.68, 1
+    bezier = easeinoutsine, 0.37, 0, 0.63, 1
+
+    # Windows
+    animation = windowsIn, 1, 1.5, easeinoutsine, popin 60% # window open
+    animation = windowsOut, 1, 1.5, easeOutCubic, popin 60% # window close.
+    animation = windowsMove, 1, 1.5, easeinoutsine, slide # everything in between, moving, dragging, resizing.
+
+    # Fading
+    animation = fade, 1, 2.5, fluent_decel
+
+	animation = fadeLayersIn, 0
+    animation = border, 0
+
+
+	# Layers
+	animation = layers, 1, 1.5, easeinoutsine, popin
+
+    # Workspaces
+    #animation = workspaces, 1, 3, fluent_decel, slidefade 30% # styles: slide, slidevert, fade, slidefade, slidefadevert
+    animation = workspaces, 1, 3, fluent_decel, slidefadevert 30% # styles: slide, slidevert, fade, slidefade, slidefadevert
+
+	animation = specialWorkspace, 1, 2, fluent_decel, slidefade 10%
+}
+
+#+end_src
+
+***** myanim.conf
+This is my animations config with smooth workspace transitions, better window open/close, faster menu transitions and more
+#+begin_src conf :tangle ~/.config/hypr/animations/myanim.conf
+# ----------------------------------------------------- 
+# ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+# █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+#
+# name "myanim"
+# credit goes to the ones in the credits section
+# ----------------------------------------------------- 
+
+animations {
+    enabled = true
+    bezier = wind, 0.05, 0.9, 0.1, 1.05
+    bezier = winIn, 0.1, 1.1, 0.1, 1.1
+    bezier = winOut, 0.3, -0.3, 0, 1
+    bezier = liner, 1, 1, 1, 1
+    bezier = md3_decel, 0.05, 0.7, 0.1, 1
+    bezier = md3_accel, 0.3, 0, 0.8, 0.15
+    bezier = menu_decel, 0.1, 1, 0, 1
+    bezier = menu_accel, 0.38, 0.04, 1, 0.07
+    bezier = softAcDecel, 0.26, 0.26, 0.15, 1
+    bezier = smoothOut, 0.5, 0, 0.99, 0.99    
+    animation = windows, 1, 6, wind, slide
+    animation = windowsIn, 1, 6, winIn, slide
+    animation = windowsOut, 1, 3, smoothOut, slide
+    animation = windowsMove, 1, 5, wind, slide
+    animation = border, 1, 1, liner
+    animation = borderangle, 1,100, linear, loop
+    animation = workspaces, 1, 2.5, softAcDecel, slide
+    animation = workspaces, 1, 7, menu_decel, slidefade 15%
+    animation = specialWorkspace, 1, 3, md3_decel, slidefadevert 15%
+    animation = fade, 1, 2.5, md3_decel
+    first_launch_animation = true
+}
+
+#+end_src
+
+*** Selected Animation
+
+The animation that you wish to use can be configured here.
+
+#+begin_src conf :tangle ~/.config/hypr/hyprland.conf
+source = ~/.config/hypr/animations/myanim.conf
+#+end_src
+
+** Layouts:
+When you have multiple windows open, =LAYOUTS= help you organize them better. 
+#+begin_src conf :tangle ~/.config/hypr/hyprland.conf
+dwindle {
+    pseudotile = true # Master switch for pseudotiling. Enabling is bound to manual user configuration 
+    preserve_split = true # You probably want this
+}
+
+# See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
+master {
+    new_status = master
+}
+
+# https://wiki.hyprland.org/Configuring/Variables/#misc
+misc {
+    force_default_wallpaper = -1 # Set to 0 or 1 to disable the anime mascot wallpapers
+    disable_hyprland_logo = false # If true disables the random hyprland logo / anime girl background. :(
+}
+#+end_src
+
+** Inputs
+Your Keyboards, Trackpads, Mice etc are all configured here. 
+#+begin_src conf :tangle ~/.config/hypr/hyprland.conf
+input {
+    kb_layout = us
+    kb_variant =
+    kb_model =
+    kb_options =
+    kb_rules =
+
+    follow_mouse = 1
+
+    sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+
+    touchpad {
+        natural_scroll = false
+    }
+}
+
+# https://wiki.hyprland.org/Configuring/Variables/#gestures
+gestures {
+    workspace_swipe = false
+}
+
+# Example per-device config
+# See https://wiki.hyprland.org/Configuring/Keywords/#per-device-input-configs for more
+device {
+    name = epic-mouse-v1
+    sensitivity = -0.5
+}
+#+end_src
+
+** Keybindings
+These are the keyboard shortcuts that are put in this config. 
+#+begin_src conf :tangle ~/.config/hypr/hyprland.conf
+###################
+### KEYBINDINGS ###
+###################
+
+# See https://wiki.hyprland.org/Configuring/Keywords/
+$mainMod = SUPER # Sets "Windows" key as main modifier
+
+# Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
+bind = CTRL+SHIFT, escape, exec, missioncenter
+bind = $mainMod, W, exec, $browser
+bind = $mainMod, A, exec, waydroid show-full-ui
+bind = $mainMod, L, exec, hyprlock
+bind = $mainMod, E, exec, nautilus
+bind = $mainMod, T, togglefloating
+bind = $mainMod+Alt, E, exec, pcmanfm
+bind = $mainMod+Shift, W, exec, ~/wallpapers/wallpaperchange.sh && ~/wallpapers/wallpaperchange2.sh
+bind = $mainMod+Alt, W, exec, ~/wallpapers/wallpaperchange2.sh
+bind = $mainMod+Ctrl, W, exec, ~/wallpapers/wallpaperchange3.sh
+bind = $mainMod+Shift, E, exec, emacsclient -c -a "emacs "
+bind = $mainMod+SHIFT, S, exec, grimblast --freeze copysave area && killall waybar
+bind = $mainMod+SHIFT, R, exec, hyprctl reload && killall waybar
+bind = $mainMod+SHIFT, Q, exec, ~/.config/rofi/scripts/powermenu.sh
+bind = $mainMod, Return, exec, $terminal
+bind = $mainMod SHIFT, Return, exec, $menu
+bind = $mainMod SHIFT, C, killactive,
+
+# Switch workspaces with mainMod + [1-0]
+bind = $mainMod, 1, workspace, 1
+bind = $mainMod, 2, workspace, 2
+bind = $mainMod, 3, workspace, 3
+bind = $mainMod, 4, workspace, 4
+bind = $mainMod, 5, workspace, 5
+bind = $mainMod, 6, workspace, 6
+bind = $mainMod, 7, workspace, 7
+bind = $mainMod, 8, workspace, 8
+bind = $mainMod, 9, workspace, 9
+bind = $mainMod, 0, workspace, 10
+
+# Move active window to a workspace with mainMod + SHIFT + [1-0]
+bind = $mainMod SHIFT, 1, movetoworkspace, 1
+bind = $mainMod SHIFT, 2, movetoworkspace, 2
+bind = $mainMod SHIFT, 3, movetoworkspace, 3
+bind = $mainMod SHIFT, 4, movetoworkspace, 4
+bind = $mainMod SHIFT, 5, movetoworkspace, 5
+bind = $mainMod SHIFT, 6, movetoworkspace, 6
+bind = $mainMod SHIFT, 7, movetoworkspace, 7
+bind = $mainMod SHIFT, 8, movetoworkspace, 8
+bind = $mainMod SHIFT, 9, movetoworkspace, 9
+bind = $mainMod SHIFT, 0, movetoworkspace, 10
+
+# Move/resize windows with mainMod + mouse clicks + dragging
+bindm = $mainMod, mouse:272, movewindow
+bindm = $mainMod, mouse:273, resizewindow
+
+
+# Attempt to make those dual function keys on Laptops work.
+bindel = ,XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindel = ,XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindel = ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindel = ,XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+bindel = ,XF86MonBrightnessUp, exec, brightnessctl s 10%+
+bindel = ,XF86MonBrightnessDown, exec, brightnessctl s 10%-
+
+# Media Control
+# Requires playerctl
+bind = $mainMod, up, exec, playerctl play-pause
+bind = $mainMod, right, exec, playerctl next
+bind = $mainMod, left, exec, playerctl previous
+bind = $mainMod, down, exec, playerctl stop
+bindl = , XF86AudioNext, exec, playerctl next
+bindl = , XF86AudioPause, exec, playerctl play-pause
+bindl = , XF86AudioPlay, exec, playerctl play-pause
+bindl = , XF86AudioPrev, exec, playerctl previous
+#+end_src
+
+** Window rules
+Examples on setting rules for certain windows and workspaces. 
+#+begin_src conf ~/.config/hypr/hyprland.conf
+##############################
+### WINDOWS AND WORKSPACES ###
+##############################
+
+# See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
+# See https://wiki.hyprland.org/Configuring/Workspace-Rules/ for workspace rules
+
+
+
+# Ignore maximize requests from apps. You'll probably like this.
+windowrulev2 = suppressevent maximize, class:.*
+
+# Fix some dragging issues with XWayland
+windowrulev2 = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
+
+#+end_src
+
+
+* Hyprland Config =ENDS= here 
+
+
+
+
+* Kitty Config =STARTS= here
+The terminal I use is kitty, why? I love animations, Cursor trail is the main reason I use kitty. 
+#+begin_src conf :tangle ~/.config/kitty/kitty.conf
+include colors.conf
+font_family CaskaydiaCove Nerd Font Mono
+bold_font auto
+italic_font auto
+bold_italic_font auto
+enable_audio_bell no
+font_size 20.0
+window_padding_width 10
+cursor_trail 1
+background_opacity 0.60
+hide_window_decorations yes
+# Minimal Tab bar styling 
+tab_bar_edge                bottom
+tab_bar_style               powerline
+tab_powerline_style         slanted
+tab_title_template          {title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}
+#+end_src
+
+* Kitty Config =ENDS= here
+
+
+
+* Waybar Config =STARTS= here
+This is my waybar config. 
+** Config.jsonc
+This is the part of the waybar config that handles the widgets.
+#+begin_src jsonc :tangle ~/.config/waybar/config.jsonc
+
+{
+    // sourced from header module //
+    
+        "layer": "top",
+        "position": "top",
+        "mod": "dock",
+        "height": 28,
+        "exclusive": true,
+        "passthrough": false,
+        "gtk-layer-shell": true,
+        "reload_style_on_change": true,
+    
+    
+    
+ //        "modules-center": ["custom/padd","custom/l_end","cpu","memory","custom/cpuinfo","custom/gpuinfo","custom/r_end","custom/l_end","idle_inhibitor","clock","custom/r_end","custom/padd"],
+         "modules-left": ["custom/padd","custom/l_end","hyprland/workspaces","hyprland/window","custom/r_end","custom/l_end","group/music","custom/ymvcava","custom/r_end","custom/padd"],
+        "modules-right": ["custom/padd","custom/l_end","tray","cpu","memory","custom/cpuinfo","custom/gpuinfo","idle_inhibitor","clock","custom/r_end","custom/padd"],
+ 
+    
+    
+        "cpu": {
+            "interval": 10,
+            "format": "󰍛 {usage}%",
+            "rotate": 0,
+            "format-alt": "{icon0}{icon1}{icon2}{icon3}",
+            "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+        },
+    
+        "memory": {
+            "states": {
+                "c": 90, // critical
+                "h": 60, // high
+                "m": 30, // medium
+           },
+            "interval": 30,
+            "format": "󰾆 {used}GB",
+            "rotate": 0,
+            "format-m": "󰾅 {used}GB",
+            "format-h": "󰓅 {used}GB",
+            "format-c": " {used}GB",
+            "format-alt": "󰾆 {percentage}%",
+            "max-length": 10,
+            "tooltip": true,
+            "tooltip-format": "󰾆 {percentage}%\n {used:0.1f}GB/{total:0.1f}GB"
+        },
+    
+        "custom/cpuinfo": {
+            "exec": " cpuinfo.sh",
+            "return-type": "json",
+            "format": "{}",
+            "rotate": 0,
+            "interval": 5, // once every 5 seconds
+            "tooltip": true,
+            "max-length": 1000
+        },
+    
+        "custom/gpuinfo": {
+            "exec": " gpuinfo.sh",
+            "return-type": "json",
+            "format": "{}",
+            "rotate": 0,
+            "interval": 5, // once every 5 seconds
+            "tooltip": true,
+            "max-length": 1000,
+            "on-click": "gpuinfo.sh --toggle",
+        },
+    
+        "custom/gpuinfo#nvidia": {
+            "exec": " gpuinfo.sh --use nvidia ",
+            "return-type": "json",
+            "format": "{}",
+            "rotate": 0,
+            "interval": 5, // once every 5 seconds
+            "tooltip": true,
+            "max-length": 1000,
+        },
+    
+        "custom/gpuinfo#amd": {
+            "exec": " gpuinfo.sh --use amd ",
+            "return-type": "json",
+            "format": "{}",
+            "rotate": 0,
+            "interval": 5, // once every 5 seconds
+            "tooltip": true,
+            "max-length": 1000,
+        },
+    
+        "custom/gpuinfo#intel": {
+            "exec": " gpuinfo.sh --use intel ",
+            "return-type": "json",
+            "format": "{}",
+            "rotate": 0,
+            "interval": 5, // once every 5 seconds
+            "tooltip": true,
+            "max-length": 1000,
+        },
+    
+        "idle_inhibitor": {
+            "format": "{icon}",
+            "rotate": 0,
+            "format-icons": {
+                "activated": "󰅶 ",
+                "deactivated": "󰛊 "
+            },
+            "tooltip-format-activated":"Caffeine Mode Active",
+            "tooltip-format-deactivated":"Caffeine Mode Inactive"
+        },
+        "clock": {
+            "format": "{:%I:%M %p}",
+            "rotate": 0,
+            "format-alt": "{:%R 󰃭 %d·%m·%y}",
+            "tooltip-format": "<span>{calendar}</span>",
+            "calendar": {
+                "mode": "month",
+                "mode-mon-col": 3,
+                "on-scroll": 1,
+                "on-click-right": "mode",
+                "format": {
+                    "months": "<span color='#ffead3'><b>{}</b></span>",
+                    "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                    "today": "<span color='#ff6699'><b>{}</b></span>"
+                }
+            },
+            "actions": {
+                "on-click-right": "mode",
+                "on-click-forward": "tz_up",
+                "on-click-backward": "tz_down",
+                "on-scroll-up": "shift_up",
+                "on-scroll-down": "shift_down"
+            }
+        },
+        // Group Music
+    "group/music": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "not-memory",
+            "transition-left-to-right": true
+        },        
+        "modules": [
+	    "custom/musicicon",
+	    "custom/music"
+        ]
+    },
+
+
+    // Custom Music Icon
+    "custom/musicicon": {
+	 "format": "▶",
+        "tooltip": false
+    },
+    
+    // YMV-Cava
+    "custom/ymvcava": {
+      "format": " {} ",
+      "return-type": "jsonc",
+      "exec": "~/.config/waybar/scripts/cava.sh waybar --width 10 --stb 0",
+      "on-click": "~/.config/waybar/scripts/cava.sh --restart",
+      "tooltip": false
+    },
+
+
+    // Music
+    "custom/music": {
+        "format": " {}",
+        "return-type": "bash",
+        "exec": "playerctl metadata --format '{{title}} - {{artist}}'",
+        "restart-interval": 1,
+        "on-click": "audacious -p -H -q ~/Music/"
+    },
+
+        
+    
+        "hyprland/workspaces": {
+            "disable-scroll": true,
+            "rotate": 0,
+            "all-outputs": true,
+            "active-only": false,
+            "on-click": "activate",
+            "disable-scroll": false,
+            "on-scroll-up": "hyprctl dispatch workspace -1",
+            "on-scroll-down": "hyprctl dispatch workspace +1",
+            "persistent-workspaces": {
+            }
+        },
+    
+        "hyprland/window": {
+            "format": "   {}",
+            "rotate": 0,
+            "separate-outputs": true,
+            "rewrite": {
+                "khing@archlinux:(.*)": "$1 ",
+                "(.*) — Mozilla Firefox": "$1 󰈹",
+                "(.*)Mozilla Firefox": "Firefox 󰈹",
+                "(.*) - Visual Studio Code": "$1 󰨞",
+                "(.*)Visual Studio Code": "Code 󰨞",
+                "(.*) - Code - OSS": "$1 󰨞",
+                "(.*)Code - OSS": "Code 󰨞",
+                "(.*) — Dolphin": "$1 󰉋",
+                "(.*)Spotify": "Spotify 󰓇",
+                "(.*)Steam": "Steam 󰓓",
+                "(.*) - Discord": "$1  ",
+                "(.*)Netflix": "Netflix 󰝆 ",
+                "(.*) — Google chrome": "$1  ",
+                "(.*)Google chrome": "Google chrome  ",
+                "(.*) — Github": "$1  ",
+                "(.*)Github": "Github ",
+                "(.*)Spotify Free": "Spotify 󰓇",
+                "(.*)Spotify Premiun": "Spotify 󰓇",
+            },
+            "max-length": 50
+        },
+    
+        "backlight": {
+            "device": "intel_backlight",
+            "rotate": 0,
+            "format": "{icon} {percent}%",
+            "format-icons": ["", "", "", "", "", "", "", "", ""],
+            "tooltip-format": "{icon} {percent}% ",
+            "on-scroll-up": "brightnesscontrol.sh i 1",
+            "on-scroll-down": "brightnesscontrol.sh d 1",
+            "min-length": 6
+        },
+    
+        "network": {
+            "tooltip": true,
+            "format-wifi": " ",
+            "rotate": 0,
+            "format-ethernet": "󰈀 ",
+            "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
+            "format-linked": "󰈀 {ifname} (No IP)",
+            "format-disconnected": "󰖪 ",
+            "tooltip-format-disconnected": "Disconnected",
+            "format-alt": "<span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
+            "interval": 2,
+        },
+    
+    "pulseaudio": {
+        "format": "{icon} {volume}",
+        "rotate": 0,
+        "format-muted": "婢",
+        "on-click": "pavucontrol -t 3",
+        "on-click-right": "volumecontrol.sh -s ''",
+        "on-click-middle": "volumecontrol.sh -o m",
+        "on-scroll-up": "volumecontrol.sh -o i",
+        "on-scroll-down": "volumecontrol.sh -o d",
+        "tooltip-format": "{icon} {desc} // {volume}%",
+        "scroll-step": 5,
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        }
+    },
+    
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "rotate": 0,
+        "format-source": "",
+        "format-source-muted": "",
+        "on-click": "pavucontrol -t 4",
+        "on-click-middle": "volumecontrol.sh -i m",
+        "on-scroll-up": "volumecontrol.sh -i i",
+        "on-scroll-down": "volumecontrol.sh -i d",
+        "tooltip-format": "{format_source} {source_desc} // {source_volume}%",
+        "scroll-step": 5
+    },
+    
+        "custom/updates": {
+            "exec": "systemupdate.sh",
+            "return-type": "json",
+            "format": "{}",
+            "rotate": 0,
+            "on-click": "hyprctl dispatch exec 'systemupdate.sh up'",
+            "interval": 86400, // once every day
+            "tooltip": true,
+            "signal": 20,
+        },
+        "custom/keybindhint": {
+            "format": " ",
+            "tooltip-format": " Keybinds",
+            "rotate": 0,
+            "on-click": "keybinds_hint.sh"
+        },
+    
+        "privacy": {
+            "icon-size": 12,
+            "icon-spacing": 5,
+            "transition-duration": 250,
+            "modules": [
+                {
+                    "type": "screenshare",
+                    "tooltip": true,
+                    "tooltip-icon-size": 24
+                },
+                {
+                    "type": "audio-in",
+                    "tooltip": true,
+                    "tooltip-icon-size": 24
+                }
+            ]
+        },
+    
+        "tray": {
+            "icon-size": 16,
+            "rotate": 0,
+            "spacing": 5
+        },
+    
+        "battery": {
+            "states": {
+                "good": 95,
+                "warning": 30,
+                "critical": 20
+            },
+            "format": "{icon} {capacity}%",
+            "rotate": 0,
+            "format-charging": " {capacity}%",
+            "format-plugged": " {capacity}%",
+            "format-alt": "{time} {icon}",
+            "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+        },
+    
+        "custom/wallchange": {
+            "format": "{}",
+            "rotate": 0,
+            "exec": "echo ; echo 󰆊 switch wallpaper",
+            "on-click": "swwwallpaper.sh -n",
+            "on-click-right": "swwwallpaper.sh -p",
+            "on-click-middle": "sleep 0.1 && swwwallselect.sh",
+            "interval" : 86400, // once every day
+            "tooltip": true
+        },
+    
+        "custom/theme": {
+            "format": "{}",
+            "rotate": 0,
+            "exec": "echo ; echo 󰟡 switch theme",
+            "on-click": "themeswitch.sh -n",
+            "on-click-right": "themeswitch.sh -p",
+            "on-click-middle": "sleep 0.1 && themeselect.sh",
+            "interval" : 86400, // once every day
+            "tooltip": true
+        },
+    
+        "custom/wbar": {
+            "format": "{}", //    //
+            "rotate": 0,
+            "exec": "echo ; echo  switch bar //  dock",
+            "on-click": "wbarconfgen.sh n",
+            "on-click-right": "wbarconfgen.sh p",
+            "on-click-middle": "sleep 0.1 && quickapps.sh kitty firefox spotify code dolphin",
+            "interval" : 86400,
+            "tooltip": true
+        },
+    
+        "custom/cliphist": {
+            "format": "{}",
+            "rotate": 0,
+            "exec": "echo ; echo 󰅇 clipboard history",
+            "on-click": "sleep 0.1 && cliphist.sh -c",
+            "on-click-right": "sleep 0.1 && cliphist.sh -d",
+            "on-click-middle": "sleep 0.1 && cliphist.sh -w",
+            "interval" : 86400, // once every day
+            "tooltip": true
+        },
+    
+        "custom/power": {
+            "format": "{}",
+            "rotate": 0,
+            "exec": "echo ; echo  logout",
+            "on-click": "logoutlaunch.sh 2",
+            "on-click-right": "logoutlaunch.sh 1",
+            "interval" : 86400, // once every day
+            "tooltip": true
+        },
+    
+    
+    // modules for padding //
+    
+        "custom/l_end": {
+            "format": " ",
+            "interval" : "once",
+            "tooltip": false
+        },
+    
+        "custom/r_end": {
+            "format": " ",
+            "interval" : "once",
+            "tooltip": false
+        },
+    
+        "custom/sl_end": {
+            "format": " ",
+            "interval" : "once",
+            "tooltip": false
+        },
+    
+        "custom/sr_end": {
+            "format": " ",
+            "interval" : "once",
+            "tooltip": false
+        },
+    
+        "custom/rl_end": {
+            "format": " ",
+            "interval" : "once",
+            "tooltip": false
+        },
+    
+        "custom/rr_end": {
+            "format": " ",
+            "interval" : "once",
+            "tooltip": false
+        },
+    
+        "custom/padd": {
+            "format": "  ",
+            "interval" : "once",
+            "tooltip": false
+        }
+    
+    }
+#+end_src
+
+** Style for waybar
+This is the part that handles the appearence of widgets in waybar. 
+#+begin_src css :tangle ~/.config/waybar/style.css
+ * {
+    border: none;
+    border-radius: 0px;
+    font-family: "JetBrainsMono Nerd Font Propo";
+    font-weight: bold;
+    font-size: 10px;
+    min-height: 10px;
+}
+
+@import "colors.css";
+
+window#waybar {
+    background: transparent;
+}
+
+tooltip {
+    background: @surface;
+    color: @on_surface;
+    border-radius: 7px;
+    border-width: 0px;
+}
+
+#workspaces button {
+    box-shadow: none;
+    text-shadow: none;
+    padding: 0px;
+    border-radius: 9px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-right: 0px;
+    color: @on_surface;
+    animation: ws_normal 20s ease-in-out 1;
+}
+
+#workspaces button.active {
+    background: @primary_container;
+    color: @on_primary_container;
+    margin-left: 3px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-right: 3px;
+    animation: ws_active 20s ease-in-out 1;
+    transition: all 0.4s cubic-bezier(.55, -0.68, .48, 1.682);
+}
+
+#workspaces button:hover {
+    background: @secondary_container;
+    color: @on_secondary_container;
+    animation: ws_hover 20s ease-in-out 1;
+    transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
+}
+
+#taskbar button {
+    box-shadow: none;
+    text-shadow: none;
+    padding: 0px;
+    border-radius: 9px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: 0px;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-right: 0px;
+    color: @on_surface;
+    animation: tb_normal 20s ease-in-out 1;
+}
+
+#taskbar button.active {
+    background: @primary_container;
+    color: @on_primary_container;
+    margin-left: 3px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-right: 3px;
+    animation: tb_active 20s ease-in-out 1;
+    transition: all 0.4s cubic-bezier(.55, -0.68, .48, 1.682);
+}
+
+#taskbar button:hover {
+    background: @secondary_container;
+    color: @on_secondary_container;
+    animation: tb_hover 20s ease-in-out 1;
+    transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
+}
+
+#tray menu * {
+    min-height: 16px
+}
+
+#tray menu separator {
+    min-height: 10px
+}
+
+#backlight,
+#battery,
+#bluetooth,
+#custom-cava,
+#group-music,
+#custom-musicicon,
+#custom-ymvcava,
+#custom-music,
+#custom-cliphist,
+#clock,
+#clock,
+#custom-cpuinfo,
+#cpu,
+#custom-github_hyde,
+#custom-gpuinfo,
+#custom-hyprsunset,
+#idle_inhibitor,
+#custom-keybindhint,
+#language,
+#memory,
+#mpris,
+#network,
+#custom-notifications,
+#custom-power,
+#privacy,
+#pulseaudio,
+#custom-sensorsinfo,
+#custom-spotify,
+#taskbar,
+#taskbar,
+#taskbar,
+#taskbar#windows,
+#custom-theme,
+#tray,
+#custom-updates,
+#custom-wallchange,
+#custom-wbar,
+#custom-weather,
+#window,
+#workspaces,
+#workspaces,
+#workspaces,
+#custom-l_end,
+#custom-r_end,
+#custom-sl_end,
+#custom-sr_end,
+#custom-rl_end,
+#custom-rr_end {
+    color: @on_surface;
+    background: @surface;
+    opacity: 1;
+    margin: 4px 0px 4px 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+#workspaces,
+#taskbar {
+    padding: 0px;
+}
+
+#custom-r_end {
+    border-radius: 0px 21px 21px 0px;
+    margin-right: 9px;
+    padding-right: 3px;
+}
+
+#custom-l_end {
+    border-radius: 21px 0px 0px 21px;
+    margin-left: 9px;
+    padding-left: 3px;
+}
+
+#custom-sr_end {
+    border-radius: 0px;
+    margin-right: 9px;
+    padding-right: 3px;
+}
+
+#custom-sl_end {
+    border-radius: 0px;
+    margin-left: 9px;
+    padding-left: 3px;
+}
+
+#custom-rr_end {
+    border-radius: 0px 7px 7px 0px;
+    margin-right: 9px;
+    padding-right: 3px;
+}
+
+#custom-rl_end {
+    border-radius: 7px 0px 0px 7px;
+    margin-left: 9px;
+    padding-left: 3px;
+}
+#+end_src
+
+** Waybar Scripts
+I use scripts in certain waybar modules. These are put in the "=~/.config/waybar/scripts/=" folder. 
+I currently only have one script called =cava.sh= which handles my own implementation of cava module in waybar. 
+I use this in the waybar module for executing the command, "=cava.sh waybar --width 10 --stb 0="
+#+begin_src bash :tangle ~/.config/waybar/scripts/cava.sh
+#!/usr/bin/env bash
+#----- Optimized bars animation without much CPU usage increase --------
+
+# Default values
+scrDir="$(dirname "$(realpath "$0")")"
+# shellcheck disable=SC1091
+
+help_msg() {
+    cat <<HELP
+Usage: $(basename "$0") [command] [OPTIONS]
+Commands:
+    stdout - Generate a cava bar to STDOUT useful for waybar, hyprlock, etc.
+    waybar - Generate a cava bar for waybar.
+    hyprlock - Generate a cava bar for hyprlock.
+
+    Note: Configurations are set in ~/.config/hyde/config.toml
+
+Options:
+    stdout:
+            --bar <cava_bar>  Specify the characters to use for the bar animation (default: ▁▂▃▄▅▆▇█).
+            --width <cava_width>   Specify the width of the bar.
+            --range <cava_range>   Specify the range of the bar.
+            --help                        Display this help message and exit.
+            --restart                     Restart the cava.
+            --stb <cava_stbmode>  Specify the standby mode for stdout cava (default: 0).
+                                        0: clean  - totally hides the module
+                                        1: blank  - makes module expand as spaces
+                                        2: full   - occupies the module with full bar
+                                        3: low    - makes the module display the lowest set bar
+                                        *: string - displays a string
+HELP
+}
+
+stdout() {
+    local temp_dir=${HYDE_RUNTIME_DIR:-/tmp}
+    local name="${cava_cmd:-"stdout"}"
+    local config_file="${temp_dir}/cava.${name}"
+
+    usage() {
+        cat <<HELP
+Usage: $(basename "$0") "${cava_cmd}" [OPTIONS]
+Options:
+  --bar <cava_bar>  Specify the characters to use for the bar animation (default: ▁▂▃▄▅▆▇█).
+  --width <cava_width>   Specify the width of the bar.
+  --range <cava_range>   Specify the range of the bar.
+  --help                        Display this help message and exit.
+  --restart                     Restart the cava.
+  --stb <cava_stbmode>  Specify the standby mode for stdout cava (default: 0).
+                                0: clean  - totally hides the module
+                                1: blank  - makes module expand as spaces
+                                2: full   - occupies the module with full bar
+                                3: low    - makes the module display the lowest set bar
+                                *: string - displays a string
+HELP
+        exit 1
+    }
+
+    # Parse command line arguments using getopt
+    if ! ARGS=$(getopt -o "hr" -l "help,bar:,width:,range:,restart,stb:" -n "$0" -- "$@"); then
+        usage
+    fi
+
+    eval set -- "$ARGS"
+    while true; do
+        case "$1" in
+        --help | -h)
+            usage
+            ;;
+        --bar)
+            cava_bar="$2"
+            shift 2
+            ;;
+        --width)
+            cava_width="$2"
+            shift 2
+            ;;
+        --range)
+            cava_range="$2"
+            shift 2
+            ;;
+        --restart) # restart by killing all cava
+            pkill -f "cava -p ${config_file}"
+            exit 0
+            ;;
+        --stb)
+            cava_stbmode="$2"
+            shift 2
+            ;;
+        --)
+            shift
+            break
+            ;;
+        *)
+            usage
+            ;;
+        esac
+    done
+
+    bar="${cava_bar:-▁▂▃▄▅▆▇█}"
+
+    max_instances=${max_instances:-$CAVA_STDOUT_MAX_INSTANCES}
+    max_instances=${max_instances:-1}
+
+    if [ "$(pgrep -c -f "cava -p ${config_file}")" -ge "${max_instances}" ]; then
+        echo "Cava reached max instances, restarting cava" 
+        pkill -o -f "cava -p ${config_file}" # kill the oldest instance
+    fi
+
+    # // cava_stbmode - standby mode for stdout cava - default 0
+    # 0: clean - totally hides the module
+    # 1: blank - makes module expand as spaces
+    # 2: full - occupies the module with full bar
+    # 3: low - makes the module display the lowest set bar
+    # <string>: - displays a string
+    case ${cava_stbmode:-0} in
+    0)
+        stbBar=''
+        ;; # Clean
+    1)
+        stbBar="‎ "
+        ;; # Invisible char
+    2)
+        stbBar="${bar: -1}"
+        ;; # Full bar
+    3)
+        stbBar="${bar:0:1}"
+        ;; # Lowest bar
+    *)
+        asciiBar="${cava_stbmode:-${bar}}"
+        ;;
+    esac
+
+    # Calculate the length of the bar outside the loop
+    bar_length=${#bar}
+    bar_width=${cava_width:-${bar_length}}
+    bar_range=${cava_range:-$((bar_length - 1))}
+    # Create dictionary to replace char with bar
+    dict="s/;//g"
+    stbAscii=$(printf '0%.0s' $(seq 1 "${bar_width}")) # predicts the amount of ascii characters to be used
+    [ -n "${asciiBar}" ] || asciiBar="${stbAscii//0/${stbBar}}"
+
+    dict="$dict;s/${stbAscii}/${asciiBar}/g"
+    i=0
+    while [ $i -lt "${bar_length}" ] || [ $i -lt "${bar_width}" ]; do
+        if [ $i -lt "${bar_length}" ]; then
+            dict="$dict;s/$i/${bar:$i:1}/g"
+        fi
+        ((i++))
+    done
+
+    # Create cava config
+    cat >"$config_file" <<EOF
+[general]
+bars = ${bar_width}
+sleep_timer = 1
+[input]
+method = pulse
+source = auto
+[output]
+method = raw
+raw_target = /dev/stdout
+data_format = ascii
+ascii_max_range = ${bar_range}
+EOF
+
+    cava -p "$config_file" | sed -u "${dict}"
+}
+
+case $1 in
+stdout)
+    shift
+    cava_cmd="stdout"
+    cava_bar="$CAVA_STDOUT_BAR" cava_width="$CAVA_STDOUT_WIDTH" cava_range="$CAVA_STDOUT_RANGE" cava_stbmode="$CAVA_STDOUT_STANDBY"
+    stdout "$@"
+    ;;
+waybar)
+    shift
+    cava_cmd="waybar"
+    cava_bar="$CAVA_WAYBAR_BAR" cava_width="$CAVA_WAYBAR_WIDTH" cava_range="$CAVA_WAYBAR_RANGE" cava_stbmode="$CAVA_WAYBAR_STANDBY"
+    stdout "$@"
+    ;;
+hyprlock)
+    shift
+    cava_cmd="hyprlock"
+    cava_bar="$CAVA_HYPRLOCK_BAR" cava_width="$CAVA_HYPRLOCK_WIDTH" cava_range="$CAVA_HYPRLOCK_RANGE" cava_stbmode="$CAVA_HYPRLOCK_STANDBY"
+    stdout "$@"
+    ;;
+*)
+    help_msg
+    ;;
+esac
+#+end_src
+
+* Waybar Config =ENDS= here
+
+
+
+* Hyprlock Config =STARTS= here
+This is to configure a proper locking system for Hyprland. =If= paired with hypridle, the system will lock itself after a short period of inactivity. You can unlock after typing your password. I personally don't like suspending my system. Why not shut it down if you're going to be inactive? Or, just lock instead ... Or, put the sleep command in ... I've had too many instances where, I have something running in the terminal, or some download. Everything stops on "automatic suspend". And I have to start from scratch. 
+But, the Hyprlock looks good, I thought even if manually locking, I should theme it up. So, here we go. 
+#+begin_src conf :tangle ~/.config/hypr/hyprlock.conf
+$text_color = rgba(FFDAD6FF)
+$entry_background_color = rgba(41000311)
+$entry_border_color = rgba(896E6C55)
+$entry_color = rgba(FFDAD6FF)
+$font_family = Rubik Light
+$font_family_clock = Rubik Light
+$font_material_symbols = Material Symbols Rounded
+
+background {
+    color = $entry_color
+    # path = {{ SWWW_WALL }}
+    
+    # path = screenshot
+    # blur_size = 15
+    # blur_passes = 4
+}
+input-field {
+    monitor =
+    size = 250, 50
+    outline_thickness = 2
+    dots_size = 0.1
+    dots_spacing = 0.3
+    outer_color = $entry_border_color
+    inner_color = $entry_background_color
+    font_color = $entry_color
+    fade_on_empty = true
+
+    position = 0, 20
+    halign = center
+    valign = center
+}
+
+label { # Clock
+    monitor =
+    text = $TIME
+    color = $text_color
+    font_size = 65
+    font_family = $font_family_clock
+
+    position = 0, 300
+    halign = center
+    valign = center
+}
+label { # Date
+    monitor =
+    text = cmd[update:5000] date +"%A, %B %d"
+    color = $text_color
+    font_size = 17
+    font_family = $font_family
+
+    position = 0, 240
+    halign = center
+    valign = center
+}
+
+label { # User
+    monitor =
+    text =     $USER
+    color = $text_color
+    shadow_passes = 1
+    shadow_boost = 0.35
+    outline_thickness = 2
+    dots_size = 0.2 # Scale of input-field height, 0.2 - 0.8
+    dots_spacing = 0.2 # Scale of dots' absolute size, 0.0 - 1.0
+    dots_center = true
+    font_size = 20
+    font_family = $font_family
+    position = 0, 50
+    halign = center
+    valign = bottom
+}
+#+end_src
+
+
+* Hyprlock Config =ENDS= here
+
+
+
+* Fish Config =STARTS= here
+I use DT's fish config. Just with a few aliases of my own. 
+#+begin_src fish :tangle ~/.config/fish/config.fish
+#  ____ _____
+# |  _ \_   _|  Derek Taylor (DistroTube)
+# | | | || |    http://www.youtube.com/c/DistroTube
+# | |_| || |    http://www.gitlab.com/dwt1/
+# |____/ |_|
+#
+# My fish config. Not much to see here; just some pretty standard stuff.
+
+### ADDING TO THE PATH
+# First line removes the path; second line sets it.  Without the first line,
+# your path gets massive and fish becomes very slow.
+set -e fish_user_paths
+set -gx PATH $PATH ~/development/flutter/bin
+set -U fish_user_paths $HOME/.bin  $HOME/.local/bin $HOME/.config/emacs/bin $HOME/Applications /var/lib/flatpak/exports/bin/ $fish_user_paths
+
+### EXPORT ###
+set fish_greeting                                 # Supresses fish's intro message
+set TERM "xterm-256color"                         # Sets the terminal type
+set EDITOR "emacsclient -t -a ''"                 # $EDITOR use Emacs in terminal
+set VISUAL "emacsclient -c -a emacs"              # $VISUAL use Emacs in GUI mode
+
+### SET FZF DEFAULTS
+set FZF_DEFAULT_OPTS "--layout=reverse --exact --border=bold --border=rounded --margin=3% --color=dark"
+
+### SET MANPAGER
+### Uncomment only one of these!
+
+### "nvim" as manpager
+set -x MANPAGER "nvim +Man!"
+
+### "less" as manpager
+# set -x MANPAGER "less"
+
+### SET EITHER DEFAULT EMACS MODE OR VI MODE ###
+function fish_user_key_bindings
+  # fish_default_key_bindings
+  fish_vi_key_bindings
+end
+### END OF VI MODE ###
+
+### AUTOCOMPLETE AND HIGHLIGHT COLORS ###
+set fish_color_normal brcyan
+set fish_color_autosuggestion '#7d7d7d'
+set fish_color_command brcyan
+set fish_color_error '#ff6c6b'
+set fish_color_param brcyan
+
+### FUNCTIONS ###
+
+# Functions needed for !! and !$
+function __history_previous_command
+  switch (commandline -t)
+  case "!"
+    commandline -t $history[1]; commandline -f repaint
+  case "*"
+    commandline -i !
+  end
+end
+
+function __history_previous_command_arguments
+  switch (commandline -t)
+  case "!"
+    commandline -t ""
+    commandline -f history-token-search-backward
+  case "*"
+    commandline -i '$'
+  end
+end
+
+# The bindings for !! and !$
+if [ "$fish_key_bindings" = "fish_vi_key_bindings" ];
+  bind -Minsert ! __history_previous_command
+  bind -Minsert '$' __history_previous_command_arguments
+else
+  bind ! __history_previous_command
+  bind '$' __history_previous_command_arguments
+end
+
+# Function for creating a backup file
+# ex: backup file.txt
+# result: copies file as file.txt.bak
+function backup --argument filename
+    cp $filename $filename.bak
+end
+
+# Function for copying files and directories, even recursively.
+# ex: copy DIRNAME LOCATIONS
+# result: copies the directory and all of its contents.
+function copy
+    set count (count $argv | tr -d \n)
+    if test "$count" = 2; and test -d "$argv[1]"
+	set from (echo $argv[1] | trim-right /)
+	set to (echo $argv[2])
+        command cp -r $from $to
+    else
+        command cp $argv
+    end
+end
+
+# Function for printing a column (splits input on whitespace)
+# ex: echo 1 2 3 | coln 3
+# output: 3
+function coln
+    while read -l input
+        echo $input | awk '{print $'$argv[1]'}'
+    end
+end
+
+# Function for printing a row
+# ex: seq 3 | rown 3
+# output: 3
+function rown --argument index
+    sed -n "$index p"
+end
+
+# Function for ignoring the first 'n' lines
+# ex: seq 10 | skip 5
+# results: prints everything but the first 5 lines
+function skip --argument n
+    tail +(math 1 + $n)
+end
+
+# Function for taking the first 'n' lines
+# ex: seq 10 | take 5
+# results: prints only the first 5 lines
+function take --argument number
+    head -$number
+end
+
+# Function for org-agenda
+function org-search -d "send a search string to org-mode"
+    set -l output (/usr/bin/emacsclient -a "" -e "(message \"%s\" (mapconcat #'substring-no-properties \
+        (mapcar #'org-link-display-format \
+        (org-ql-query \
+        :select #'org-get-heading \
+        :from  (org-agenda-files) \
+        :where (org-ql--query-string-to-sexp \"$argv\"))) \
+        \"
+    \"))")
+    printf $output
+end
+
+### END OF FUNCTIONS ###
+
+### MY ALIASES ###
+alias i='sudo pacman --needed -S '
+alias ia='yay --needed -S '
+alias r='sudo pacman -R '
+alias ra='yay -R '
+alias u='sudo pacman -Syu && yay -Syu && yay -Syu --devel' # Bleeding edge :D
+alias s='sudo pacman -Ss '
+alias sa='yay -Ss '
+alias g='git clone '
+alias v='nvim '
+alias c='clear '
+alias mi='playerctl metadata --format "{{title}} - {{artist}}"'
+
+
+### ALIASES ###
+# navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
+
+# vim and emacs
+alias vim='nvim'
+alias emacs="emacsclient -c -a 'emacs'"
+alias em='/usr/bin/emacs -nw'
+alias rem="killall emacs || echo 'Emacs server not running'; /usr/bin/emacs --daemon" # Kill Emacs and restart daemon..
+
+# Changing "ls" to "eza"
+alias ls='eza -al --color=always --group-directories-first' # my preferred listing
+alias la='eza -a --color=always --group-directories-first'  # all files and dirs
+alias ll='eza -l --color=always --group-directories-first'  # long format
+alias lt='eza -aT --color=always --group-directories-first' # tree listing
+alias l.='eza -a | egrep "^\."'
+alias l.='eza -al --color=always --group-directories-first ../' # ls on the PARENT directory
+alias l..='eza -al --color=always --group-directories-first ../../' # ls on directory 2 levels up
+alias l...='eza -al --color=always --group-directories-first ../../../' # ls on directory 3 levels up
+
+# pacman and yay
+alias pacsyu='sudo pacman -Syu'                  # update only standard pkgs
+alias pacsyyu='sudo pacman -Syyu'                # Refresh pkglist & update standard pkgs
+alias parsua='paru -Sua --noconfirm'             # update only AUR pkgs (paru)
+alias parsyu='paru -Syu --noconfirm'             # update standard pkgs and AUR pkgs (paru)
+alias unlock='sudo rm /var/lib/pacman/db.lck'    # remove pacman lock
+alias orphan='sudo pacman -Rns (pacman -Qtdq)'  # remove orphaned packages (DANGEROUS!)
+
+# get fastest mirrors
+alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
+alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
+alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
+
+# adding flags
+alias df='df -h'               # human-readable sizes
+alias free='free -m'           # show sizes in MB
+alias grep='grep --color=auto' # colorize output (good for log files)
+
+# ps
+alias psa="ps auxf"
+alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
+alias psmem='ps auxf | sort -nr -k 4'
+alias pscpu='ps auxf | sort -nr -k 3'
+
+# Merge Xresources
+alias merge='xrdb -merge ~/.Xresources'
+
+# git
+alias addup='git add -u'
+alias addall='git add .'
+alias branch='git branch'
+alias checkout='git checkout'
+alias clone='git clone'
+alias commit='git commit -m'
+alias fetch='git fetch'
+alias pull='git pull origin'
+alias push='git push origin'
+alias tag='git tag'
+alias newtag='git tag -a'
+
+# get error messages from journalctl
+alias jctl="journalctl -p 3 -xb"
+
+# gpg encryption
+# verify signature for isos
+alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
+# receive the key of a developer
+alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
+
+# change your default USER shell
+alias tobash="sudo chsh $USER -s /bin/bash && echo 'Log out and log back in for change to take effect.'"
+alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Log out and log back in for change to take effect.'"
+alias tofish="sudo chsh $USER -s /bin/fish && echo 'Log out and log back in for change to take effect.'"
+
+# bigger font in tty and regular font in tty
+alias bigfont="setfont ter-132b"
+alias regfont="setfont default8x16"
+
+# bare git repo alias for dotfiles
+alias config="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
+
+# termbin
+alias tb="nc termbin.com 9999"
+
+# the terminal rickroll
+alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
+
+# Mocp must be launched with bash instead of Fish!
+alias mocp="bash -c mocp"
+
+
+### SETTING THE STARSHIP PROMPT ###
+starship init fish | source
+
+### FZF ###
+# Enables the following keybindings:
+# CTRL-t = fzf select
+# CTRL-r = fzf history
+# ALT-c  = fzf cd
+fzf --fish | source
+
+
+
+#+end_src
+
+* Fish Config =ENDS= here
+
+
+* Rofi Config =STARTS= here
+Rofi is the app launcher in my dotfiles. I use DT's configuration. With Matugen colors. 
+#+begin_src rasi :tangle ~/.config/rofi/config.rasi
+configuration {
+ modi: "window,drun,ssh,combi";
+ font: "hack 10";
+ combi-modi: "window,drun,ssh";
+ }
+@theme "~/.config/rofi/themes/material.rasi"
+#+end_src
+
+** Rofi scripts
+Scripts in the =~/.config/rofi/scripts/= directory
+#+begin_src bash :tangle ~/.config/rofi/scripts/powermenu.sh
+#!/usr/bin/env bash
+chosen=$(printf "Shutdown\nReboot" | rofi -dmenu -i -p "what to do?" -theme-str `@import "~/.config/rofi/themes/material.rasi "`)
+case "$chosen" in
+    "Shutdown") shutdown now ;;
+    "Reboot") reboot ;;
+    *) exit 1 ;;
+esac
+#+end_src
+
+** Rofi Theme
+I made a matching matugen colored rofi theme
+#+begin_src rasi :tangle ~/.config/rofi/themes/material.rasi
+/**
+ * ROFI Color theme
+ * NAME: material.rasi
+ * DESCRIPTION: This is a centered prompt.
+ * AUTHOR: Yuvan Michael Vivenzi (YMV)
+ */
+@import "colors.rasi"
+
+ * {
+    background-color:            @surface;
+    border-color:                @primary;
+    text-color:                  @on-surface;
+    font:                        "Ubuntu Mono 11";
+    prompt-font:                 "Ubuntu Bold 10";
+    prompt-background:           @primary;
+    prompt-foreground:           @on-primary;
+    prompt-padding:              4px;
+    alternate-normal-background: @surface-container-low;
+    alternate-normal-foreground: @text-color;
+    selected-normal-background:  @primary;
+    selected-normal-foreground:  @on-primary;
+    spacing:                     3;
+}
+#window {
+    border:  2;
+    padding: 5;
+}
+#mainbox {
+    border:  0;
+    padding: 0;
+}
+#message {
+    border:       1px dash 0px 0px ;
+    padding:      1px ;
+}
+#listview {
+    fixed-height: 0;
+    border:       2px solid 0px 0px ;
+    border-color: @surface-container-low;
+    spacing:      2px ;
+    scrollbar:    true;
+    padding:      2px 0px 0px ;
+}
+#element {
+    border:  0;
+    padding: 1px ;
+}
+#element.selected.normal {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+#element.alternate.normal {
+    background-color: @alternate-normal-background;
+    text-color:       @alternate-normal-foreground;
+}
+#scrollbar {
+    width:        0px ;
+    border:       0;
+    handle-width: 0px ;
+    padding:      0;
+}
+#sidebar {
+    border: 2px dash 0px 0px ;
+}
+#button.selected {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+#inputbar {
+    spacing:    0;
+    padding:    1px ;
+}
+#case-indicator {
+    spacing:    0;
+}
+#entry {
+    padding: 4px 4px;
+    expand: false;
+    width: 10em;
+}
+#prompt {
+    padding:          @prompt-padding;
+    background-color: @prompt-background;
+    text-color:       @prompt-foreground;
+    font:             @prompt-font;
+    border-radius:    2px;
+}
+
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+/* Not actually relevant for this configuration, but it might
+be useful to someone having issues with their icons' background color
+
+element-icon {
+    background-color: inherit;
+}
+*/
+#+end_src
+
+* Rofi Config =ENDS= here
+
+* Emacs Config =STARTS= here
+I use DT's emacs config. But use 1 extra code block for beacon mode. I'm going to make a seperate independent implementation of my own soon.
+
+* BEACON
+Make your cursor shine! When you scroll, the cursor will shine, letting you know it's position. Looks pretty cool to me. 
+#+begin_src emacs-lisp
+(use-package beacon
+  :ensure t
+  :config
+  (beacon-mode 1))
+#+end_src
+  
+** Emacs theme
+My own matugen colored emacs theme called material.
+#+begin_src emacs-lisp :tangle ~/.config/emacs/themes/material-theme.el
+;;; material-theme.el --- Theme using Matugen CSS variables
+
+;; Copyright (C) 2025 
+
+;; Author: Yuvan Michael Vivenzi (YMV), Co-created with ANTHROP/C Claude . Model used is Claude 3.7 Sonnet.
+;; Version: 1.1
+;; Package-Requires: ((emacs "24.1"))
+;; Keywords: faces
+
+;;; Commentary:
+
+;; A theme using Matugen CSS variables with quality of life improvements:
+;; - Better source block distinction
+;; - Improved text visibility when selected
+;; - Refined org-mode styling with hidden asterisks
+;; - Enhanced contrast and readability
+;; - Seamless integration of source blocks with consistent styling
+;; - Font settings removed to use those from ~/.config/emacs/config.org
+
+;;; Code:
+
+(deftheme material "Theme using Matugen CSS variables with quality of life improvements.")
+
+;; Define function to read CSS variables
+(defun material-get-color-from-css (var-name)
+  "Extract color value for VAR-NAME from colors.css file."
+  (let* ((css-file (expand-file-name "colors.css" user-emacs-directory))
+         (css-content (with-temp-buffer
+                        (insert-file-contents css-file)
+                        (buffer-string)))
+         (var-pattern (concat "@define-color\\s-+" var-name "\\s-+\\(#[0-9a-fA-F]\\{6\\}\\);"))
+         (match (string-match var-pattern css-content)))
+    (if match
+        (match-string 1 css-content)
+      (message "Could not find color variable: %s" var-name)
+      "#000000")))
+
+;; Define function to adjust color brightness
+(defun material-adjust-color (hex-color factor)
+  "Adjust HEX-COLOR brightness by FACTOR (0-2).
+Values < 1 darken, values > 1 lighten."
+  (let* ((r (string-to-number (substring hex-color 1 3) 16))
+         (g (string-to-number (substring hex-color 3 5) 16))
+         (b (string-to-number (substring hex-color 5 7) 16))
+         (adjust-channel (lambda (channel)
+                           (max 0 (min 255 (round (* channel factor))))))
+         (new-r (funcall adjust-channel r))
+         (new-g (funcall adjust-channel g))
+         (new-b (funcall adjust-channel b)))
+    (format "#%02x%02x%02x" new-r new-g new-b)))
+
+;; Define all the color variables
+(let* ((bg (material-get-color-from-css "background"))
+      (err (material-get-color-from-css "error"))
+      (err-container (material-get-color-from-css "error_container"))
+      (inverse-on-surface (material-get-color-from-css "inverse_on_surface"))
+      (inverse-primary (material-get-color-from-css "inverse_primary"))
+      (inverse-surface (material-get-color-from-css "inverse_surface"))
+      (on-background (material-get-color-from-css "on_background"))
+      (on-err (material-get-color-from-css "on_error"))
+      (on-err-container (material-get-color-from-css "on_error_container"))
+      (on-primary (material-get-color-from-css "on_primary"))
+      (on-primary-container (material-get-color-from-css "on_primary_container"))
+      (on-primary-fixed (material-get-color-from-css "on_primary_fixed"))
+      (on-primary-fixed-variant (material-get-color-from-css "on_primary_fixed_variant"))
+      (on-secondary (material-get-color-from-css "on_secondary"))
+      (on-secondary-container (material-get-color-from-css "on_secondary_container"))
+      (on-secondary-fixed (material-get-color-from-css "on_secondary_fixed"))
+      (on-secondary-fixed-variant (material-get-color-from-css "on_secondary_fixed_variant"))
+      (on-surface (material-get-color-from-css "on_surface"))
+      (on-surface-variant (material-get-color-from-css "on_surface_variant"))
+      (on-tertiary (material-get-color-from-css "on_tertiary"))
+      (on-tertiary-container (material-get-color-from-css "on_tertiary_container"))
+      (on-tertiary-fixed (material-get-color-from-css "on_tertiary_fixed"))
+      (on-tertiary-fixed-variant (material-get-color-from-css "on_tertiary_fixed_variant"))
+      (outline-color (material-get-color-from-css "outline"))
+      (outline-variant (material-get-color-from-css "outline_variant"))
+      (primary (material-get-color-from-css "primary"))
+      (primary-container (material-get-color-from-css "primary_container"))
+      (primary-fixed (material-get-color-from-css "primary_fixed"))
+      (primary-fixed-dim (material-get-color-from-css "primary_fixed_dim"))
+      (scrim (material-get-color-from-css "scrim"))
+      (secondary (material-get-color-from-css "secondary"))
+      (secondary-container (material-get-color-from-css "secondary_container"))
+      (secondary-fixed (material-get-color-from-css "secondary_fixed"))
+      (secondary-fixed-dim (material-get-color-from-css "secondary_fixed_dim"))
+      (shadow (material-get-color-from-css "shadow"))
+      (source-color (material-get-color-from-css "source_color"))
+      (surface (material-get-color-from-css "surface"))
+      (surface-bright (material-get-color-from-css "surface_bright"))
+      (surface-container (material-get-color-from-css "surface_container"))
+      (surface-container-high (material-get-color-from-css "surface_container_high"))
+      (surface-container-highest (material-get-color-from-css "surface_container_highest"))
+      (surface-container-low (material-get-color-from-css "surface_container_low"))
+      (surface-container-lowest (material-get-color-from-css "surface_container_lowest"))
+      (surface-dim (material-get-color-from-css "surface_dim"))
+      (surface-tint (material-get-color-from-css "surface_tint"))
+      (surface-variant (material-get-color-from-css "surface_variant"))
+      (tertiary (material-get-color-from-css "tertiary"))
+      (tertiary-container (material-get-color-from-css "tertiary_container"))
+      (tertiary-fixed (material-get-color-from-css "tertiary_fixed"))
+      (tertiary-fixed-dim (material-get-color-from-css "tertiary_fixed_dim")))
+
+  (custom-theme-set-faces
+   'material
+   ;; Basic faces
+   `(default ((t (:background ,bg :foreground ,on-background))))
+   `(cursor ((t (:background ,primary))))
+   `(highlight ((t (:background ,primary-container :foreground ,on-primary-container))))
+   `(region ((t (:background ,primary-container :foreground ,on-primary-container :extend t))))
+   `(secondary-selection ((t (:background ,secondary-container :foreground ,on-secondary-container :extend t))))
+   `(isearch ((t (:background ,tertiary-container :foreground ,on-tertiary-container :weight bold))))
+   `(lazy-highlight ((t (:background ,secondary-container :foreground ,on-secondary-container))))
+   `(vertical-border ((t (:foreground ,surface-variant))))
+   `(border ((t (:background ,surface-variant :foreground ,surface-variant))))
+   `(fringe ((t (:background ,surface :foreground ,outline-variant))))
+   `(shadow ((t (:foreground ,outline-variant))))
+   `(link ((t (:foreground ,primary :underline t))))
+   `(link-visited ((t (:foreground ,tertiary :underline t))))
+   `(success ((t (:foreground ,tertiary))))
+   `(warning ((t (:foreground ,secondary))))
+   `(error ((t (:foreground ,err))))
+   `(match ((t (:background ,secondary-container :foreground ,on-secondary-container))))
+   
+   ;; Font-lock
+   `(font-lock-builtin-face ((t (:foreground ,primary))))
+   `(font-lock-comment-face ((t (:foreground ,outline-color :slant italic))))
+   `(font-lock-comment-delimiter-face ((t (:foreground ,outline-variant))))
+   `(font-lock-constant-face ((t (:foreground ,tertiary :weight bold))))
+   `(font-lock-doc-face ((t (:foreground ,on-surface-variant :slant italic))))
+   `(font-lock-function-name-face ((t (:foreground ,primary :weight bold))))
+   `(font-lock-keyword-face ((t (:foreground ,secondary :weight bold))))
+   `(font-lock-string-face ((t (:foreground ,tertiary))))
+   `(font-lock-type-face ((t (:foreground ,primary-fixed))))
+   `(font-lock-variable-name-face ((t (:foreground ,on-surface))))
+   `(font-lock-warning-face ((t (:foreground ,err :weight bold))))
+   `(font-lock-preprocessor-face ((t (:foreground ,secondary-fixed-dim))))
+   `(font-lock-negation-char-face ((t (:foreground ,tertiary-fixed))))
+
+   ;; Show paren
+   `(show-paren-match ((t (:background ,primary-container :foreground ,on-primary-container :weight bold))))
+   `(show-paren-mismatch ((t (:background ,err-container :foreground ,on-err-container :weight bold))))
+   
+   ;; Mode line - improved status bar styling
+   `(mode-line ((t (:background ,surface-container :foreground ,on-surface :box nil))))
+   `(mode-line-inactive ((t (:background ,surface :foreground ,on-surface-variant :box nil))))
+   `(mode-line-buffer-id ((t (:foreground ,primary :weight bold))))
+   `(mode-line-emphasis ((t (:foreground ,primary :weight bold))))
+   `(mode-line-highlight ((t (:foreground ,primary :box nil))))
+   
+   ;; Improved Source blocks - making them integrated with the theme but removing font family references
+   `(org-block ((t (:background ,surface-container-low :extend t))))
+   `(org-block-begin-line ((t (:background ,surface-container-low :foreground ,primary-fixed-dim :extend t :slant italic))))
+   `(org-block-end-line ((t (:background ,surface-container-low :foreground ,primary-fixed-dim :extend t :slant italic))))
+   `(org-code ((t (:background ,surface-container-low :foreground ,tertiary-fixed))))
+   `(org-verbatim ((t (:background ,surface-container-low :foreground ,primary-fixed))))
+   `(org-meta-line ((t (:foreground ,outline-color :slant italic))))
+   
+   ;; Org mode with hidden asterisks - keeping size adjustments but removing font family settings
+   `(org-level-1 ((t (:foreground ,primary :weight bold :height 1.2))))
+   `(org-level-2 ((t (:foreground ,primary-container :weight bold :height 1.1))))
+   `(org-level-3 ((t (:foreground ,secondary :weight bold))))
+   `(org-level-4 ((t (:foreground ,secondary-container :weight bold))))
+   `(org-level-5 ((t (:foreground ,tertiary :weight bold))))
+   `(org-level-6 ((t (:foreground ,tertiary-container :weight bold))))
+   `(org-level-7 ((t (:foreground ,primary-fixed :weight bold))))
+   `(org-level-8 ((t (:foreground ,primary-fixed-dim :weight bold))))
+   `(org-document-title ((t (:foreground ,primary :weight bold :height 1.3))))
+   `(org-document-info ((t (:foreground ,primary-container))))
+   `(org-todo ((t (:foreground ,err :weight bold))))
+   `(org-done ((t (:foreground ,tertiary :weight bold))))
+   `(org-headline-done ((t (:foreground ,on-surface-variant))))
+   `(org-hide ((t (:foreground ,bg)))) ;; Hide leading asterisks
+   `(org-ellipsis ((t (:foreground ,tertiary :underline nil)))) ;; Style for folded content indicator
+   `(org-table ((t (:foreground ,secondary-fixed))))
+   `(org-formula ((t (:foreground ,tertiary))))
+   `(org-checkbox ((t (:foreground ,primary :weight bold))))
+   `(org-date ((t (:foreground ,secondary-fixed :underline t))))
+   `(org-special-keyword ((t (:foreground ,on-surface-variant :slant italic))))
+   `(org-tag ((t (:foreground ,outline-color :weight normal))))
+   
+   ;; Magit
+   `(magit-section-highlight ((t (:background ,surface-container-low))))
+   `(magit-diff-hunk-heading ((t (:background ,surface-container :foreground ,on-surface-variant))))
+   `(magit-diff-hunk-heading-highlight ((t (:background ,surface-container-high :foreground ,on-surface))))
+   `(magit-diff-context ((t (:foreground ,on-surface-variant))))
+   `(magit-diff-context-highlight ((t (:background ,surface-container-low :foreground ,on-surface))))
+   `(magit-diff-added ((t (:background ,tertiary-container :foreground ,on-tertiary-container))))
+   `(magit-diff-added-highlight ((t (:background ,tertiary-container :foreground ,on-tertiary-container :weight bold))))
+   `(magit-diff-removed ((t (:background ,err-container :foreground ,on-err-container))))
+   `(magit-diff-removed-highlight ((t (:background ,err-container :foreground ,on-err-container :weight bold))))
+   `(magit-hash ((t (:foreground ,outline-color))))
+   `(magit-branch-local ((t (:foreground ,tertiary :weight bold))))
+   `(magit-branch-remote ((t (:foreground ,primary :weight bold))))
+   
+   ;; Company
+   `(company-tooltip ((t (:background ,surface-container :foreground ,on-surface))))
+   `(company-tooltip-selection ((t (:background ,primary-container :foreground ,on-primary-container))))
+   `(company-tooltip-common ((t (:foreground ,primary))))
+   `(company-tooltip-common-selection ((t (:foreground ,on-primary-container :weight bold))))
+   `(company-tooltip-annotation ((t (:foreground ,tertiary))))
+   `(company-scrollbar-fg ((t (:background ,primary))))
+   `(company-scrollbar-bg ((t (:background ,surface-variant))))
+   `(company-preview ((t (:foreground ,on-surface-variant :slant italic))))
+   `(company-preview-common ((t (:foreground ,primary :slant italic))))
+   
+   ;; Ido
+   `(ido-first-match ((t (:foreground ,primary :weight bold))))
+   `(ido-only-match ((t (:foreground ,tertiary :weight bold))))
+   `(ido-subdir ((t (:foreground ,secondary))))
+   `(ido-indicator ((t (:foreground ,err))))
+   `(ido-virtual ((t (:foreground ,outline-color))))
+   
+   ;; Helm
+   `(helm-selection ((t (:background ,primary-container :foreground ,on-primary-container))))
+   `(helm-match ((t (:foreground ,primary :weight bold))))
+   `(helm-source-header ((t (:background ,surface-container-high :foreground ,primary :weight bold :height 1.1))))
+   `(helm-candidate-number ((t (:foreground ,tertiary :weight bold))))
+   `(helm-ff-directory ((t (:foreground ,primary :weight bold))))
+   `(helm-ff-file ((t (:foreground ,on-surface))))
+   `(helm-ff-executable ((t (:foreground ,tertiary))))
+   
+   ;; Which-key
+   `(which-key-key-face ((t (:foreground ,primary :weight bold))))
+   `(which-key-separator-face ((t (:foreground ,outline-variant))))
+   `(which-key-command-description-face ((t (:foreground ,on-surface))))
+   `(which-key-group-description-face ((t (:foreground ,secondary))))
+   `(which-key-special-key-face ((t (:foreground ,tertiary :weight bold))))
+   
+   ;; Line numbers - removing font family references
+   `(line-number ((t (:foreground ,outline-variant))))
+   `(line-number-current-line ((t (:foreground ,primary :weight bold))))
+   
+   ;; Parenthesis matching
+   `(sp-show-pair-match-face ((t (:background ,primary-container :foreground ,on-primary-container))))
+   `(sp-show-pair-mismatch-face ((t (:background ,err-container :foreground ,on-err-container))))
+   
+   ;; Rainbow delimiters
+   `(rainbow-delimiters-depth-1-face ((t (:foreground ,primary))))
+   `(rainbow-delimiters-depth-2-face ((t (:foreground ,secondary))))
+   `(rainbow-delimiters-depth-3-face ((t (:foreground ,tertiary))))
+   `(rainbow-delimiters-depth-4-face ((t (:foreground ,primary-fixed))))
+   `(rainbow-delimiters-depth-5-face ((t (:foreground ,secondary-fixed))))
+   `(rainbow-delimiters-depth-6-face ((t (:foreground ,tertiary-fixed))))
+   `(rainbow-delimiters-depth-7-face ((t (:foreground ,primary-fixed-dim))))
+   `(rainbow-delimiters-depth-8-face ((t (:foreground ,secondary-fixed-dim))))
+   `(rainbow-delimiters-depth-9-face ((t (:foreground ,tertiary-fixed-dim))))
+   `(rainbow-delimiters-mismatched-face ((t (:foreground ,err :weight bold))))
+   `(rainbow-delimiters-unmatched-face ((t (:foreground ,err :weight bold))))
+   
+   ;; Dired
+   `(dired-directory ((t (:foreground ,primary :weight bold))))
+   `(dired-ignored ((t (:foreground ,outline-variant))))
+   `(dired-flagged ((t (:foreground ,err))))
+   `(dired-marked ((t (:foreground ,tertiary :weight bold))))
+   `(dired-symlink ((t (:foreground ,secondary :slant italic))))
+   `(dired-header ((t (:foreground ,primary :weight bold :height 1.1))))
+   
+   ;; Terminal colors
+   `(term-color-black ((t (:foreground ,surface-container-lowest :background ,surface-container-lowest))))
+   `(term-color-red ((t (:foreground ,err :background ,err))))
+   `(term-color-green ((t (:foreground ,tertiary :background ,tertiary))))
+   `(term-color-yellow ((t (:foreground ,primary-fixed-dim :background ,primary-fixed-dim))))
+   `(term-color-blue ((t (:foreground ,primary :background ,primary))))
+   `(term-color-magenta ((t (:foreground ,tertiary-fixed :background ,tertiary-fixed))))
+   `(term-color-cyan ((t (:foreground ,secondary-fixed :background ,secondary-fixed))))
+   `(term-color-white ((t (:foreground ,on-surface :background ,on-surface))))
+   
+   ;; EShell
+   `(eshell-prompt ((t (:foreground ,primary :weight bold))))
+   `(eshell-ls-directory ((t (:foreground ,primary :weight bold))))
+   `(eshell-ls-symlink ((t (:foreground ,secondary :slant italic))))
+   `(eshell-ls-executable ((t (:foreground ,tertiary))))
+   `(eshell-ls-archive ((t (:foreground ,on-tertiary-container))))
+   `(eshell-ls-backup ((t (:foreground ,outline-variant))))
+   `(eshell-ls-clutter ((t (:foreground ,err))))
+   `(eshell-ls-missing ((t (:foreground ,err))))
+   `(eshell-ls-product ((t (:foreground ,on-surface-variant))))
+   `(eshell-ls-readonly ((t (:foreground ,on-surface-variant))))
+   `(eshell-ls-special ((t (:foreground ,secondary-fixed))))
+   `(eshell-ls-unreadable ((t (:foreground ,outline-variant))))
+   
+   ;; Improved markdown mode - removed font family references
+   `(markdown-header-face ((t (:foreground ,primary :weight bold))))
+   `(markdown-header-face-1 ((t (:foreground ,primary :weight bold :height 1.2))))
+   `(markdown-header-face-2 ((t (:foreground ,primary-container :weight bold :height 1.1))))
+   `(markdown-header-face-3 ((t (:foreground ,secondary :weight bold))))
+   `(markdown-header-face-4 ((t (:foreground ,secondary-container :weight bold))))
+   `(markdown-inline-code-face ((t (:foreground ,tertiary-fixed :background ,surface-container-low))))
+   `(markdown-code-face ((t (:background ,surface-container-low :extend t))))
+   `(markdown-pre-face ((t (:background ,surface-container-low))))
+   `(markdown-table-face ((t (:foreground ,secondary-fixed))))
+   
+   ;; Web mode
+   `(web-mode-html-tag-face ((t (:foreground ,primary))))
+   `(web-mode-html-tag-bracket-face ((t (:foreground ,on-surface-variant))))
+   `(web-mode-html-attr-name-face ((t (:foreground ,secondary))))
+   `(web-mode-html-attr-value-face ((t (:foreground ,tertiary))))
+   `(web-mode-css-selector-face ((t (:foreground ,primary))))
+   `(web-mode-css-property-name-face ((t (:foreground ,secondary))))
+   `(web-mode-css-string-face ((t (:foreground ,tertiary))))
+   
+   ;; Flycheck
+   `(flycheck-error ((t (:underline (:style wave :color ,err)))))
+   `(flycheck-warning ((t (:underline (:style wave :color ,secondary)))))
+   `(flycheck-info ((t (:underline (:style wave :color ,tertiary)))))
+   `(flycheck-fringe-error ((t (:foreground ,err))))
+   `(flycheck-fringe-warning ((t (:foreground ,secondary))))
+   `(flycheck-fringe-info ((t (:foreground ,tertiary))))
+   
+   ;; Mini-buffer customization
+   `(minibuffer-prompt ((t (:foreground ,primary :weight bold))))
+   
+   ;; Improved search highlighting
+   `(lsp-face-highlight-textual ((t (:background ,primary-container :foreground ,on-primary-container :weight bold))))
+   `(lsp-face-highlight-read ((t (:background ,secondary-container :foreground ,on-secondary-container :weight bold))))
+   `(lsp-face-highlight-write ((t (:background ,tertiary-container :foreground ,on-tertiary-container :weight bold))))
+   
+   ;; Info and help modes
+   `(info-title-1 ((t (:foreground ,primary :weight bold :height 1.3))))
+   `(info-title-2 ((t (:foreground ,primary-container :weight bold :height 1.2))))
+   `(info-title-3 ((t (:foreground ,secondary :weight bold :height 1.1))))
+   `(info-title-4 ((t (:foreground ,secondary-container :weight bold))))
+   `(Info-quoted ((t (:foreground ,tertiary))))
+   `(info-menu-header ((t (:foreground ,primary :weight bold))))
+   `(info-menu-star ((t (:foreground ,primary))))
+   `(info-node ((t (:foreground ,tertiary :weight bold))))
+   ))
+
+;; Add org-mode hooks for hiding leading stars
+(with-eval-after-load 'org
+  (setq org-hide-leading-stars t)
+  (setq org-startup-indented t))
+
+;;;###autoload
+(when load-file-name
+  (add-to-list 'custom-theme-load-path
+               (file-name-as-directory (file-name-directory load-file-name))))
+
+(provide-theme 'material)
+;;; material-theme.el ends here
+#+end_src
+* Emacs Config =ENDS= here
+
+
+* Wallpapers Config =STARTS= here
+
+** Waypaper Config =STARTS= here
+Waypaper is the wallpaper manager. 
+#+begin_src ini :tangle ~/.config/waypaper/config.ini
+[Settings]
+language = en
+folder = ~/wallpapers
+monitors = All
+wallpaper = ~/wallpapers/0316.jpg
+show_path_in_tooltip = True
+backend = swww
+fill = fill
+sort = name
+color = #ffffff
+subfolders = False
+all_subfolders = False
+show_hidden = False
+show_gifs_only = False
+post_command = 
+number_of_columns = 3
+swww_transition_type = random
+swww_transition_step = 90
+swww_transition_angle = 0
+swww_transition_duration = 2
+swww_transition_fps = 60
+mpvpaper_sound = False
+mpvpaper_options = 
+use_xdg_state = False
+#+end_src 
+** Waypaper Config =ENDS= here
+
+*** Scripts 
+Scripts I've made for wallpaper management
+**** Wallpaperchange.sh
+This is so that swww can set the wallpaper told by waypaper
+#+begin_src bash :tangle ~/wallpapers/wallpaperchange.sh
+#!/usr/bin/env bash
+wallpaper=$(waypaper --random | sed -n 's/^Selected file: \(\/.*\)$/\1/p') # Putting random flag for a new wallpaper that's chosen by the program randomly. 
+#+end_src
+
+**** Wallpaperchange2.sh
+This is where the color generation magic happens!
+#+begin_src bash :tangle ~/wallpapers/wallpaperchange2.sh
+#!/usr/bin/env bash
+sleep 1
+wallpaper=$(waypaper --restore | sed -n 's/^Selected file: \(\/.*\)$/\1/p') # Putting restore flag for putting wallpaper path in txt file and make matugen to catch the wallpaper colors from the path present in the txt file.
+echo "$wallpaper" > ~/wallpapers/wall_lock.txt
+wallpaperlock=$(cat ~/wallpapers/wall_lock.txt)  
+matugen image "$wallpaperlock" # generates colors!
+hyprctl reload # make sure Hyprland reloads after all the things are sorted out. + waybar restart
+#+end_src
+
+**** Wallpaperchange3.sh
+Sometimes you need to choose a specific wallpaper
+#+begin_src bash :tangle ~/wallpapers/wallpaperchange3.sh
+#!/usr/bin/env bash
+wallpaper=$(waypaper | sed -n 's/^Selected file: \(\/.*\)$/\1/p') # No restore / random flag to launch waypaper gui.
+echo "$wallpaper" > ~/wallpapers/wall_lock.txt
+matugen image "$wallpaper"
+hyprctl reload # make sure Hyprland reloads after all the things are sorted
+#+end_src
+
+* Wallpapers Config =ENDS= here
+
+* GTK Config =STARTS= here
+
+** GTK3
+Let's theme our beloved GTK apps! 
+Starting with gtk3, you will need to install =adw-gtk-theme= present in the arch repos with the same name, or search online for instructions on your distribution. When colors are regenerated using matugen, they are picked up by adw automatically.
+
+#+begin_src css :tangle ~/.config/gtk-3.0/gtk.css
+@import 'colors.css';
+#+end_src
+
+** GTK4
+For GTK4, a precaution is required. 
+Some themes symlink the files =gtk.css= and =gtk-dark.css= to the files in directory where the themes are installed. For non-breakerage of the themes, the files are made read only. You as the user is required to remove these files by using the =sudo rm= command. 
+
+Required code block for the light version of gtk theme,
+Although the theme is dark, this is just put as a formality to ensure that the apps can pick up whichever one they want and still look good. As in certain scenarios, they might just pick up =gtk.css= instead of =gtk-dark.css=
+
+#+begin_src css :tangle ~/.config/gtk-4.0/gtk.css
+@import 'colors.css';
+#+end_src
+
+Same code block for the dark version. 
+
+
+#+begin_src css :tangle ~/.config/gtk-4.0/gtk-dark.css
+@import 'colors.css';
+#+end_src
+
+* GTK Config =ENDS= here
+
+
+* QT Config =STARTS= here
+The qt apps configuration is automatically made by matugen. Install qt5ct and qt6ct and select the style as Fusion and the color pallete as matugen. You should be good to go. There is also a possiblility that previously configured kde themes and kvantum themes may conflict with the ones set by this config. So, for a optimal better looking experience, it is recommended that you disable those conflicting themes first. 
+* QT Config =ENDS= here
+
+* Pacman Config =STARTS= here
+I usually add the following 1 line since parallel downloads is the default in arch now. And color is the only uncomment required. 
+#+begin_src conf
+ILoveCandy
+#+end_src
+
+* Pacman Config =ENDS= here
+
+
+* GRUB Theme / Config =STARTS= here
+The GRUB configuration will be inspired by Google's Material Design System.
+A GRUB theme will be made available after the rest of the configuration is done as it's currently not a priority for me at the moment. 
+* GRUB Theme / Config =ENDS= here
+
+
+* SDDM Theme / Config =STARTS= here
+The SDDM configuration will be inspired by Google's Material Design System.
+A SDDM theme will be made available after the rest of the configuration is done as it's currently not a priority for me at the moment. 
+
+* SDDM Theme / Config =ENDS= here
+
+* Neovim Config =STARTS= here
+Currently, I'm using NVChad for the neovim configuration. Along with @Axenide's configuration for pywal colors in NVChad. I won't tinker much here, as the config is pretty nice. I only use vim / neovim in case I'm too lazy to open emacs using my keybinding. But, I may make my own neovim configuration that's similar to my emacs configuration, or better,  at some point of time. 
+
+
+** Plugins 
+=init.lua= file for the plugins that I just like experimenting with. 
+
+#+begin_src lua :tangle ~/.config/nvim/lua/plugins/init.lua
+return {
+  {
+    "stevearc/conform.nvim",
+    -- event = "BufWritePre", -- uncomment for format on save
+    opts = require "configs.conform",
+  },
+
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require "configs.lspconfig"
+    end,
+  },
+
+   {
+     "github/copilot.vim",
+     lazy = false,
+     config = function()
+       -- Mapping tab is already used in NvChad
+       vim.g.copilot_no_tab_map = true -- Disable tab mapping
+       vim.g.copilot_assume_mapped = true -- Assume that the mapping is already done
+     end,
+   },
+}
+#+end_src
+
+
+* Neovim Config =ENDS= here
+
+
+
+************************* So, that's about it! 
+************************* More features planned ahead!  
+
+
+*** Coming up soon ... .. . ..  .... Or maybe not so soon, I gotta learn Flutter first,
+*** Flutter based app ecosystem for my dots. Install, Upgrade, Configure etc. ... 
+*** Like ML4W with his gtk apps, but I think this will be better. . + Cross Platform. Yes, these dots will come to Windows, macOS, Android and more. Just like how some people did it with their dots. 
+
+
+* INSTALLATION INSTRUCTIONS
+PLEASE NOTE THAT THE INSTALLATION OF THESE DOTFILES IS NOT RECOMMENDED. YOU CAN INSTALL IT, IT WILL WORK SPLENDID. BUT IT MAY ALSO NOT. BUT I CAN GUARANTEE THAT 99% IT WILL WORK. THE OTHER 1% WELL, PROBABLY ISOLATED MINOR CASES OF YOU HAVING CONFLICTING PACKAGES AND SUCH
+
+** BACKUP
+BACKUP YOUR EXISTING SETUP. CRUCIAL, CRUCIAL, CRUCIAL STEP!!!!! IF NOT, YOU'RE IN THE MERCY OF YOUR DOOM. (Just kidding, you'll spend the entire day fixing stuff. That's all. And I don't want you to do that. So, please make sure you have a backup, okay? .. okay? . Fine, as you say ... .. . .. ...)
+
+** HAVE A TERMINAL READY, DO ALL THIS IN A SINGLE WORKSPACE.
+You'll have to reboot your system after this, so, please save your files. 
+
+** 1. Set up CHAOTIC AUR
+Google it. It's a common process done by many.
+
+** 2. INSTALL FOLLOWING PACKAGES
+THESE ARE CRUCIAL PACKAGES REQUIRED BY THE DOTFILES. AUR PACKAGES INCLUDED, USE YOUR AUR HELPER.
+
+#+begin_src txt
+matugen
+neovim
+cmake
+cpio 
+ninja 
+meson 
+emacs 
+waypaper 
+waybar 
+swww 
+hyprlock 
+rofi 
+zen-browser-bin 
+nwg-look 
+ttf-ubuntu-font-family 
+ttf-jetbrains-mono 
+fish 
+fzf 
+starship 
+eza 
+brightnessctl 
+grimblast 
+cava 
+xorg-xhost 
+hyprpolkitagent 
+ttf-jetbrains-mono-nerd 
+qt5ct 
+qt6ct 
+adw-gtk-theme 
+alsa-utils man
+arj 
+lha 
+lrzip 
+lzip 
+lzop 
+p7ip 
+unarj 
+unrar 
+zip
+xarchiver
+python-pywal16 
+python-watchdog 
+colorz
+#+end_src
+
+
+** 3. Make the following directories
+These are the required folders
+#+begin_src txt
+mkdir ~/.config/rofi/
+mkdir ~/.config/rofi/themes/
+mkdir ~/.config/waybar/
+mkdir ~/.config/waybar/scripts/
+mkdir ~/.config/matugen/
+mkdir ~/.config/matugen/templates/
+mkdir ~/.config/fish/
+mkdir ~/.config/waypaper/
+#+end_src
+
+** 4. Cloning repos + Wallpapers (CRUCIAL)
+Do the following commands
+#+begin_src bash
+cd ~
+git clone https://github.com/HyDE-Project/HyDE
+git clone https://gitlab.com/dwt1/dotfiles
+git clone https://gitlab.com/dwt1/wallpapers
+cd dotfiles/
+cp -r .config/emacs/ ~/.config/
+cd ~
+sudo rm -r dotfiles/
+#+end_src
+
+
+** 5. Launch emacs and set it up
+And let the setup process continue, you might have to restart emacs a couple of times. 
+
+** 6. Clone this repo and change to it
+#+begin_src bash
+git clone https://github.com/YuvanMichaelVivenzi/dots
+cd dots/
+#+end_src
+
+** 7. Open README.org in emacs and tangle the files
+Open emacs and type the keybinding, =SPC .=
+=SPC= means the spacebar and =.= means the dot button on the keyboard.
+Type the path where you cloned this repository and open =README.org=
+Tangle all code blocks by =Control+C Control+V t= . Your setup will break! Use the terminal!
+
+** 8. Make the following files executable
+#+begin_src bash
+chmod +x ~/.config/waybar/cava.sh
+chmod +x ~/.config/rofi/scripts/powermenu.sh
+chmod +x ~/wallpapers/wallpaperchange.sh
+chmod +x ~/wallpapers/wallpaperchange2.sh
+chmod +x ~/wallpapers/wallpaperchange3.sh
+#+end_src
+
+** 9. Reboot
+
+That should be about it, Reboot to get the new dotfiles up and running.
+
+** 10. Encounter any issues? Immediately report here!
+Please report issues about the dotfiles so that it can be better for everyone and people using linux have better rices. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
