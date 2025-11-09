@@ -2,6 +2,9 @@
 #+AUTHOR: Yuvan Michael Vivenzi
 #+STARTUP: showeverything
 
+# Important Notice
+Development is paused until Arch Linux for ARM becomes viable. 
+
 *** INSTALLATION INSTRUCTIONS AT THE END, (SEE LAST ENTRY IN TABLE OF CONTENTS)
 
 *** BEST VIEWED USING EMACS ORG MODE THAT IS SET UP CORRECTLY * 
